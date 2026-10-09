@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Vitalii Dehod — веб-розробник. Лендинги, Telegram-боти, AI-автоматизація для бізнесу. Тернопіль, Україна.">
-  <meta property="og:title" content="Vitalii Dehod — Web Developer & AI Automation">
-  <meta property="og:description" content="Лендинги, Telegram-боти, AI-автоматизація для бізнесу.">
+  <meta name="description" content="Розробка AI-агентів, Telegram-ботів та лендингів для бізнесу. Автоматизація комунікації з клієнтами, заявок, бронювання та бізнес-процесів.">
+  <meta property="og:title" content="AI-боти, Telegram-боти та розробка сайтів — Vitalii Dehod">
+  <meta property="og:description" content="Розробка AI-агентів, Telegram-ботів та лендингів для бізнесу. Автоматизація комунікації з клієнтами, заявок, бронювання та бізнес-процесів.">
   <meta property="og:type" content="website">
-  <title>Vitalii Dehod — Web Developer</title>
+  <title>AI-боти, Telegram-боти та розробка сайтів — Vitalii Dehod</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -80,6 +80,7 @@
       border: 1px solid var(--border);
     }
     .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+    .btn-sm { padding: 8px 16px; font-size: 13px; }
 
     .badge {
       display: inline-flex;
@@ -120,6 +121,12 @@
       margin-bottom: 16px;
       line-height: 1.3;
     }
+    .section-intro {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 640px;
+      margin-bottom: 40px;
+    }
 
     /* ===== HEADER ===== */
     .header {
@@ -147,6 +154,14 @@
       transition: color var(--transition);
     }
     .nav-links a:hover { color: var(--text-primary); }
+    .nav-links a.nav-cta {
+      background: var(--accent);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: var(--radius);
+      font-weight: 600;
+    }
+    .nav-links a.nav-cta:hover { background: #2563EB; color: #fff; }
     .burger {
       display: none;
       background: none;
@@ -186,8 +201,8 @@
     .hero-photo {
       position: relative;
       flex-shrink: 0;
-      width: 340px;
-      height: 340px;
+      width: 300px;
+      height: 300px;
       border-radius: 24px;
       overflow: hidden;
       border: 1px solid var(--border);
@@ -208,22 +223,25 @@
       pointer-events: none;
     }
     @media (max-width: 900px) {
-      .hero .container { flex-direction: column-reverse; text-align: center; }
-      .hero-photo { width: 220px; height: 220px; }
-      .hero-desc { max-width: 100%; }
+      .hero .container { flex-direction: column-reverse; text-align: center; align-items: center; }
+      .hero-photo { width: 200px; height: 200px; }
+      .hero-desc { max-width: 100%; margin-left: auto; margin-right: auto; }
+      .hero-status { justify-content: center; }
+      .hero-actions { justify-content: center; }
     }
     .hero-greeting {
       font-family: var(--font-display);
-      font-size: 14px;
+      font-size: 13px;
       color: var(--text-muted);
       margin-bottom: 16px;
+      letter-spacing: 1px;
     }
     .hero-greeting span { color: var(--green); }
     .hero h1 {
       font-family: var(--font-display);
-      font-size: 40px;
+      font-size: 44px;
       font-weight: 600;
-      line-height: 1.2;
+      line-height: 1.15;
       color: var(--text-primary);
       margin-bottom: 20px;
     }
@@ -232,7 +250,7 @@
       font-size: 17px;
       color: var(--text-secondary);
       margin-bottom: 32px;
-      max-width: 520px;
+      max-width: 540px;
       line-height: 1.7;
     }
     .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
@@ -256,36 +274,152 @@
       50% { opacity: 0.5; }
     }
 
-    /* ===== STACK ===== */
-    .stack-grid {
+    /* ===== SERVICES (2 cards) ===== */
+    .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
     }
-    .stack-item {
+    .service-card {
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+    }
+    .service-name {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+    .service-desc {
+      font-size: 15px;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+    .service-features {
+      margin-bottom: 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 16px;
+    }
+    .service-features li {
+      font-size: 14px;
+      padding: 4px 0;
+      color: var(--text-secondary);
       display: flex;
       align-items: center;
-      gap: 12px;
-      padding: 16px;
+      gap: 8px;
     }
-    .stack-icon {
-      width: 40px; height: 40px;
-      border-radius: 8px;
-      background: var(--accent-dim);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .service-features li::before {
+      content: '✓';
+      color: var(--green);
+      font-weight: 600;
+      font-size: 13px;
       flex-shrink: 0;
     }
-    .stack-icon svg { width: 20px; height: 20px; stroke: var(--accent); fill: none; stroke-width: 1.8; }
-    .stack-name {
+    .service-cta { margin-top: auto; }
+
+    /* ===== AI DEMO SECTION ===== */
+    .ai-demo {
+      background: var(--bg-secondary);
+    }
+    .ai-demo-grid {
+      display: grid;
+      grid-template-columns: minmax(240px, 300px) 1fr;
+      gap: 56px;
+      align-items: center;
+      margin-top: 24px;
+    }
+    /* iPhone 15 Pro Max frame */
+    .demo-video {
+      position: relative;
+      width: 100%;
+      max-width: 300px;
+      aspect-ratio: 9 / 19.5;
+      padding: 10px;
+      background: linear-gradient(145deg, #2a2a2d 0%, #1a1a1c 45%, #0f0f10 100%);
+      border-radius: 52px;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.04) inset,
+        0 0 0 2px #0a0a0b,
+        0 25px 70px rgba(0,0,0,0.55),
+        0 8px 24px rgba(0,0,0,0.35);
+      margin: 0 auto;
+    }
+    /* Subtle inner titanium rim */
+    .demo-video::before {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      border-radius: 46px;
+      border: 1px solid rgba(255,255,255,0.06);
+      pointer-events: none;
+      z-index: 2;
+    }
+    /* Dynamic Island */
+    .demo-video::after {
+      content: '';
+      position: absolute;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 92px;
+      height: 26px;
+      background: #000;
+      border-radius: 50px;
+      z-index: 3;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.03);
+    }
+    .demo-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 42px;
+      background: #000;
+    }
+    @media (max-width: 500px) {
+      .demo-video { border-radius: 44px; padding: 8px; }
+      .demo-video::before { border-radius: 38px; inset: 5px; }
+      .demo-video video { border-radius: 36px; }
+      .demo-video::after { width: 78px; height: 22px; top: 14px; }
+    }
+    .demo-flow { display: flex; flex-direction: column; gap: 10px; margin: 24px 0 28px; }
+    .demo-step {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 18px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: border-color var(--transition);
+    }
+    .demo-step:hover { border-color: var(--border-hover); }
+    .demo-step-num {
+      font-family: var(--font-display);
+      font-size: 12px;
+      color: var(--accent);
+      background: var(--accent-dim);
+      padding: 4px 8px;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+    .demo-step-text {
       font-size: 14px;
-      font-weight: 500;
       color: var(--text-primary);
     }
-    .stack-detail {
-      font-size: 12px;
-      color: var(--text-muted);
+    .demo-note {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    @media (max-width: 800px) {
+      .ai-demo-grid { grid-template-columns: 1fr; gap: 32px; }
+      .demo-video { max-width: 260px; }
     }
 
     /* ===== PROJECTS ===== */
@@ -294,32 +428,43 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 20px;
     }
-    .project-card { overflow: hidden; }
+    .project-card { overflow: hidden; display: flex; flex-direction: column; }
     .project-img {
       width: 100%;
       aspect-ratio: 16/9;
       background: var(--bg-secondary);
       overflow: hidden;
     }
-    .project-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.8;
-      transition: all 0.4s;
-    }
-    .project-card:hover .project-img img { opacity: 1; transform: scale(1.03); }
-    .project-body { padding: 20px; }
+    .project-img img,
+    .project-img video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+  transition: all 0.4s;
+  display: block;
+}
+.project-card:hover .project-img img,
+.project-card:hover .project-img video { opacity: 1; transform: scale(1.03); }
+    .project-body { padding: 22px; display: flex; flex-direction: column; flex: 1; }
     .project-title {
       font-family: var(--font-display);
-      font-size: 16px;
+      font-size: 17px;
       font-weight: 600;
       color: var(--text-primary);
-      margin-bottom: 8px;
+      margin-bottom: 10px;
+      line-height: 1.35;
     }
-    .project-desc { font-size: 14px; color: var(--text-secondary); margin-bottom: 12px; }
-    .project-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
-    .project-links { display: flex; gap: 12px; }
+    .project-desc { font-size: 14px; color: var(--text-secondary); margin-bottom: 14px; line-height: 1.6; }
+    .project-capabilities { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+    .project-tech {
+      font-family: var(--font-display);
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      letter-spacing: 0.5px;
+    }
+    .project-links { display: flex; gap: 14px; margin-top: auto; }
     .project-link {
       font-size: 13px;
       font-weight: 500;
@@ -332,54 +477,56 @@
     .project-link:hover { opacity: 0.7; }
     .project-link svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; }
 
-    /* ===== SERVICES ===== */
-    .services-grid {
+    /* ===== HOW IT WORKS ===== */
+    .process {
+      background: var(--bg-secondary);
+    }
+    .process-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+      position: relative;
     }
-    .service-card { padding: 28px; position: relative; }
-    .service-card.featured { border-color: var(--accent); transform: scale(1.06); }
-    .service-featured-badge {
-      position: absolute;
-      top: -11px; left: 24px;
-      background: var(--accent);
-      color: #fff;
-      font-size: 11px;
-      font-weight: 600;
-      padding: 3px 12px;
-      border-radius: 50px;
+    .process-step {
+      padding: 24px;
+      position: relative;
     }
-    .service-name {
+    .process-num {
+      font-family: var(--font-display);
+      font-size: 13px;
+      color: var(--accent);
+      background: var(--accent-dim);
+      padding: 4px 10px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+    .process-title {
       font-family: var(--font-display);
       font-size: 16px;
       font-weight: 600;
       color: var(--text-primary);
-      margin-bottom: 4px;
+      margin-bottom: 10px;
     }
-    .service-price {
-      font-family: var(--font-display);
-      font-size: 28px;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin: 16px 0 4px;
-    }
-    .service-price small { font-size: 14px; color: var(--text-muted); font-weight: 400; }
-    .service-period { font-size: 13px; color: var(--text-muted); margin-bottom: 20px; }
-    .service-features li {
-      font-size: 14px;
-      padding: 5px 0;
-      color: var(--text-secondary);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .service-features li::before {
-      content: '✓';
-      color: var(--green);
-      font-weight: 600;
+    .process-desc {
       font-size: 13px;
-      flex-shrink: 0;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .process-arrow {
+      position: absolute;
+      top: 50%;
+      right: -18px;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-family: var(--font-display);
+      font-size: 16px;
+      pointer-events: none;
+    }
+    @media (max-width: 900px) {
+      .process-grid { grid-template-columns: 1fr; }
+      .process-arrow { display: none; }
     }
 
     /* ===== ABOUT ===== */
@@ -397,18 +544,103 @@
       margin-top: 3px;
     }
     .stat-card {
-      padding: 20px;
+      padding: 24px;
       text-align: center;
     }
     .stat-value {
       font-family: var(--font-display);
-      font-size: 32px;
+      font-size: 34px;
       font-weight: 600;
       color: var(--text-primary);
       line-height: 1;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
     .stat-label { font-size: 13px; color: var(--text-muted); }
+
+    /* ===== TECHNOLOGIES (compact) ===== */
+    .tech-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .tech-badge {
+      font-family: var(--font-display);
+      font-size: 13px;
+      color: var(--text-primary);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 8px 14px;
+      border-radius: 50px;
+      transition: all var(--transition);
+    }
+    .tech-badge:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ===== FAQ ===== */
+    .faq-list { margin-top: 24px; }
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--bg-card);
+      margin-bottom: 10px;
+      overflow: hidden;
+      transition: border-color var(--transition);
+    }
+    .faq-item:hover { border-color: var(--border-hover); }
+    .faq-item.open { border-color: var(--accent); }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 500;
+      text-align: left;
+      padding: 18px 22px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      transition: color var(--transition);
+    }
+    .faq-question:hover { color: var(--accent); }
+    .faq-icon {
+      width: 18px; height: 18px;
+      flex-shrink: 0;
+      position: relative;
+      transition: transform var(--transition);
+    }
+    .faq-icon::before,
+    .faq-icon::after {
+      content: '';
+      position: absolute;
+      background: currentColor;
+      border-radius: 2px;
+      top: 50%; left: 50%;
+    }
+    .faq-icon::before {
+      width: 12px; height: 2px;
+      transform: translate(-50%, -50%);
+    }
+    .faq-icon::after {
+      width: 2px; height: 12px;
+      transform: translate(-50%, -50%);
+      transition: transform var(--transition);
+    }
+    .faq-item.open .faq-icon::after { transform: translate(-50%, -50%) scaleY(0); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 300ms ease;
+    }
+    .faq-answer-inner {
+      padding: 0 22px 20px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
 
     /* ===== CTA ===== */
     .cta-section {
@@ -416,24 +648,26 @@
       text-align: center;
     }
     .cta-box {
-      padding: 48px;
+      padding: 56px 48px;
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      background: linear-gradient(135deg, var(--bg-card) 0%, rgba(59,130,246,0.04) 100%);
+      background: linear-gradient(135deg, var(--bg-card) 0%, rgba(59,130,246,0.05) 100%);
     }
     .cta-title {
       font-family: var(--font-display);
-      font-size: 28px;
+      font-size: 30px;
       font-weight: 600;
       color: var(--text-primary);
-      margin-bottom: 12px;
+      margin-bottom: 14px;
+      line-height: 1.25;
     }
-    .cta-desc { font-size: 16px; color: var(--text-secondary); margin-bottom: 28px; max-width: 420px; margin-left: auto; margin-right: auto; }
+    .cta-desc { font-size: 16px; color: var(--text-secondary); margin-bottom: 32px; max-width: 520px; margin-left: auto; margin-right: auto; line-height: 1.6; }
     .cta-links {
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: 24px;
       margin-top: 32px;
+      flex-wrap: wrap;
     }
     .cta-link {
       font-size: 14px;
@@ -449,18 +683,43 @@
     /* ===== FOOTER ===== */
     .footer {
       border-top: 1px solid var(--border);
-      padding: 24px 0;
-      text-align: center;
+      padding: 28px 0;
       font-size: 13px;
       color: var(--text-muted);
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { transition: color var(--transition); }
+    .footer-links a:hover { color: var(--text-primary); }
+
+    /* ===== REVEAL ANIMATION ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 500ms ease, transform 500ms ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      html { scroll-behavior: auto; }
     }
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 900px) {
       .projects-grid { grid-template-columns: 1fr; }
-      .services-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+      .services-grid { grid-template-columns: 1fr; }
       .about-content { grid-template-columns: 1fr; gap: 32px; }
       .section-title { font-size: 24px; }
+      .service-features { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 640px) {
@@ -476,15 +735,19 @@
         padding: 20px;
         gap: 16px;
       }
+      .nav-links a.nav-cta { text-align: center; }
       .burger { display: flex; }
       .hero { padding: 110px 0 60px; }
-      .hero h1 { font-size: 28px; }
+      .hero h1 { font-size: 30px; }
       .hero-desc { font-size: 15px; }
-      .hero-actions { flex-direction: column; }
+      .hero-actions { flex-direction: column; width: 100%; }
       .hero-actions .btn { width: 100%; justify-content: center; }
-      .stack-grid { grid-template-columns: 1fr 1fr; }
-      .cta-box { padding: 32px 20px; }
-      .cta-links { flex-direction: column; align-items: center; }
+      .service-card { padding: 24px; }
+      .service-name { font-size: 18px; }
+      .cta-box { padding: 36px 22px; }
+      .cta-title { font-size: 24px; }
+      .cta-links { flex-direction: column; align-items: center; gap: 14px; }
+      .footer-inner { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
@@ -496,10 +759,10 @@
     <a href="#" class="nav-logo"><span>&lt;</span>Ceo.Absolute<span>/&gt;</span></a>
     <div class="nav-links" id="navLinks">
       <a href="#services">Послуги</a>
-      <a href="#projects">Проєкти</a>
-      <a href="#stack">Стек</a>
-      <a href="#about">Про мене</a>
-      <a href="#contact">Контакт</a>
+      <a href="#projects">Кейси</a>
+      <a href="#process">Як працюємо</a>
+      <a href="#faq">FAQ</a>
+      <a href="https://telegram.me/Vittttalik" class="nav-cta" target="_blank" rel="noopener">Обговорити проєкт</a>
     </div>
     <button class="burger" id="burger" aria-label="Меню">
       <span></span><span></span><span></span>
@@ -511,15 +774,15 @@
 <section class="hero">
   <div class="container">
     <div class="hero-content">
-      <p class="hero-greeting"><span>~/</span> привіт, я</p>
-      <h1>Vitalii Dehod<br><span class="highlight">Web Developer</span></h1>
-      <p class="hero-desc">Розробляю AI агенти, лендинги та Telegram-ботів для бізнесу. Автоматизую процеси за допомогою AI. Перетворюю ідеї в працюючі продукти.</p>
+      <p class="hero-greeting"><span>~/</span> Vitalii Dehod — Web Developer &amp; AI Automation</p>
+      <h1>AI-боти та сайти<br><span class="highlight">для вашого бізнесу</span></h1>
+      <p class="hero-desc">Розробляю AI-агентів, Telegram-ботів та сучасні сайти для бізнесу. Автоматизую спілкування з клієнтами, заявки та рутинні процеси.</p>
       <div class="hero-actions">
         <a href="https://telegram.me/Vittttalik" class="btn btn-primary" target="_blank" rel="noopener">
-          Написати в Telegram
+          Обговорити проєкт
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
-        <a href="#projects" class="btn btn-outline">Мої проєкти</a>
+        <a href="#projects" class="btn btn-outline">Переглянути роботи</a>
       </div>
       <div class="hero-status">
         <span class="status-dot"></span>
@@ -535,221 +798,200 @@
 <!-- SERVICES -->
 <section class="section" id="services">
   <div class="container">
-    <p class="section-label">// послуги</p>
-    <h2 class="section-title">Що я можу зробити для вас</h2>
+    <p class="section-label reveal">// послуги</p>
+    <h2 class="section-title reveal">Рішення для вашого бізнесу</h2>
+    <p class="section-intro reveal">Дві основні напрямки — AI-автоматизація комунікації та розробка сайтів, які презентують бізнес і генерують заявки.</p>
     <div class="services-grid">
-      <div class="card service-card">
-        <h3 class="service-name">Лендинг</h3>
-        <p style="font-size:14px; color: var(--text-muted); margin-bottom: 20px;">Під ключ: дизайн, верстка, деплой</p>
+      <div class="card service-card reveal">
+        <h3 class="service-name">AI-боти та агенти</h3>
+        <p class="service-desc">Автоматизую спілкування з клієнтами та рутинні процеси.</p>
         <ul class="service-features">
-          <li>Адаптивний дизайн</li>
-          <li>SEO-оптимізація</li>
-          <li>Копірайтинг</li>
-          <li>Деплой на хостинг</li>
-        </ul>
-      </div>
-
-      <div class="card service-card featured">
-        <span class="service-featured-badge">Популярне</span>
-        <h3 class="service-name">AI-агент</h3>
-        <p style="font-size:14px; color: var(--text-muted); margin-bottom: 20px;">Розумний бот для вашого бізнесу</p>
-        <ul class="service-features">
-          <li>Відповіді клієнтам 24/7</li>
-          <li>Знає ваш асортимент і ціни</li>
+          <li>Telegram-боти</li>
+          <li>Instagram AI-агенти</li>
+          <li>AI-консультанти</li>
+          <li>Відповіді 24/7</li>
           <li>Кваліфікація лідів</li>
-          <li>Ескалація на менеджера</li>
-          <li>Адмін-панель</li>
+          <li>Бронювання / заявки</li>
+          <li>Передача менеджеру</li>
+          <li>CRM / API інтеграції</li>
         </ul>
+        <div class="service-cta">
+          <a href="https://telegram.me/Vittttalik" class="btn btn-primary" target="_blank" rel="noopener">
+            Обговорити AI-рішення
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
       </div>
 
-      <div class="card service-card">
-        <h3 class="service-name">Лендинг + бот</h3>
-        <p style="font-size:14px; color: var(--text-muted); margin-bottom: 20px;">Сайт + Telegram-бот для заявок</p>
+      <div class="card service-card reveal">
+        <h3 class="service-name">Сайти</h3>
+        <p class="service-desc">Сучасні швидкі сайти для презентації бізнесу та отримання заявок.</p>
         <ul class="service-features">
-          <li>Все з "Лендинг"</li>
-          <li>Telegram-бот для заявок</li>
-          <li>Google Analytics</li>
-          <li>30 днів підтримки</li>
+          <li>Landing Page</li>
+          <li>Сайт-візитка</li>
+          <li>Сайт для послуг</li>
+          <li>Каталог</li>
+          <li>Адаптивний дизайн</li>
+          <li>SEO basics</li>
+          <li>CMS / адмін-панель</li>
+          <li>Оплата та API</li>
         </ul>
+        <div class="service-cta">
+          <a href="https://telegram.me/Vittttalik" class="btn btn-primary" target="_blank" rel="noopener">
+            Обговорити сайт
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
       </div>
     </div>
-    <div style="text-align: center; margin-top: 32px;">
-      <a href="price.pdf" class="btn btn-outline" target="_blank" rel="noopener">
-        Повний прайс-лист
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      </a>
+  </div>
+</section>
+
+<!-- AI DEMO -->
+<section class="section ai-demo" id="ai-demo">
+  <div class="container">
+    <p class="section-label reveal">// AI automation</p>
+    <h2 class="section-title reveal">Як AI-агент працює з клієнтами</h2>
+    <div class="ai-demo-grid">
+      <div class="demo-video reveal">
+        <video src="assets/agent-demo.webm" autoplay muted loop playsinline preload="metadata"></video>
+      </div>
+      <div class="reveal">
+        <p class="demo-note">AI-агент може працювати як перша лінія комунікації з клієнтами: відповідати на типові питання, консультувати, збирати дані та передавати складні запити менеджеру.</p>
+        <div class="demo-flow">
+          <div class="demo-step"><span class="demo-step-num">01</span><span class="demo-step-text">Клієнт пише повідомлення</span></div>
+          <div class="demo-step"><span class="demo-step-num">02</span><span class="demo-step-text">AI визначає запит</span></div>
+          <div class="demo-step"><span class="demo-step-num">03</span><span class="demo-step-text">Відповідає на основі інформації бізнесу</span></div>
+          <div class="demo-step"><span class="demo-step-num">04</span><span class="demo-step-text">Кваліфікує клієнта</span></div>
+          <div class="demo-step"><span class="demo-step-num">05</span><span class="demo-step-text">Збирає заявку / створює бронювання</span></div>
+          <div class="demo-step"><span class="demo-step-num">06</span><span class="demo-step-text">За необхідності передає менеджеру</span></div>
+        </div>
+        <a href="https://telegram.me/Vittttalik" class="btn btn-primary" target="_blank" rel="noopener">
+          Хочу такого бота
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- PROJECTS -->
-<section class="section" id="projects" style="background: var(--bg-secondary);">
+<section class="section" id="projects">
   <div class="container">
-    <p class="section-label">// проєкти</p>
-    <h2 class="section-title">Останні роботи</h2>
+    <p class="section-label reveal">// кейси</p>
+    <h2 class="section-title reveal">Реалізовані проєкти</h2>
+    <p class="section-intro reveal">Робочі продукти, які вирішують конкретні бізнес-задачі — від автоматизації рутинних процесів до презентаційних сайтів.</p>
     <div class="projects-grid">
 
-      <div class="card project-card">
+      <div class="card project-card reveal">
         <div class="project-img">
-          <img src="assets/workua.png" alt="PLAMET AI Bot" loading="lazy">
+          <video src="assets/site-1.webm" autoplay muted loop playsinline preload="metadata"></video>
         </div>
         <div class="project-body">
-          <h3 class="project-title">Job Search Agent</h3>
-          <p class="project-desc">Персональний AI-агент у Telegram, який автоматизує пошук роботи на work.ua.</p>
-          <div class="project-tags">
-            <span class="badge badge-accent">Python</span>
-            <span class="badge badge-accent">Claude API</span>
-            <span class="badge badge-accent">aiogram 3</span>
-          </div>
+          <h3 class="project-title">Лендинг для бренду парфумів</h3>
+          <p class="project-desc">Такий hero працює на впізнаваність бренду в рази краще за статичне фото.</p>
           <div class="project-links">
-            <a href="https://t.me/Ce0portfolio/8" class="project-link">
-              Демо <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </a>
-            <a href="https://github.com/bartos92/Workua-agent" class="project-link">
-              GitHub <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="card project-card">
-        <div class="project-img">
-          <img src="assets/landing.png" alt="FreshBox Landing" loading="lazy">
-        </div>
-        <div class="project-body">
-          <h3 class="project-title">FreshBox Landing</h3>
-          <p class="project-desc">Лендинг для сервісу доставки meal-kit. Адаптивний дизайн, CTA в Telegram, оптимізований під конверсію.</p>
-          <div class="project-tags">
-            <span class="badge badge-accent">HTML/CSS</span>
-            <span class="badge badge-accent">JavaScript</span>
-            <span class="badge badge-accent">Netlify</span>
-          </div>
-          <a href="https://github.com/bartos92/-freshbox-landing" target="_blank" class="project-link">
-              GitHub <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </a>
-        </div>
-      </div>
-
-      <div class="card project-card">
-        <div class="project-img">
-          <img src="assets/proxyseller.png" alt="Telegram-бот для управління проксі та крипто-депозитами" loading="lazy">
-        </div>
-        <div class="project-body">
-          <h3 class="project-title"> Бот для управління проксі та крипто-депозитами
-</h3>
-          <p class="project-desc">Telegram-бот який дозволяє клієнту управляти резидентськими проксі на proxy-seller.com — без заходу на сайт.</p>
-          <div class="project-tags">
-            <span class="badge badge-accent">Python</span>
-            <span class="badge badge-accent">API</span>
-            <span class="badge badge-accent">BSC</span>
-          </div>
-          <div class="project-links">
-            <a href="https://telegram.me/Ce0portfolio/5" target="_blank" class="project-link">
+            <a href="https://t.me/Ce0portfolio/18" target="_blank" rel="noopener" class="project-link">
               Демо <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
             </a>
           </div>
         </div>
       </div>
 
-      <div class="card project-card">
+      <div class="card project-card reveal">
         <div class="project-img">
-          <img src="assets/spread.png" alt="Dental Clinic Bot" loading="lazy">
+          <video src="assets/site-2.webm" autoplay muted loop playsinline preload="metadata"></video>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">Концепт-лендинг для автобренду</h3>
+          <p class="project-desc">При наведенні в зоні курсора чорна машина плавно переходить у білу, з м'яким фейдом по краях</p>
+          <div class="project-links">
+            <a href="https://bartos92.github.io/car-hover-landing/" target="_blank" rel="noopener" class="project-link">
+              Демо <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card project-card reveal">
+        <div class="project-img">
+          <img src="assets/proxyseller.png" alt="Бот для управління проксі та крипто-депозитами" loading="lazy">
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">Бот для управління проксі та крипто-депозитами</h3>
+          <p class="project-desc">Telegram-бот, який дозволяє клієнту управляти резидентськими проксі на proxy-seller.com без заходу на сайт — заявки, оплата та контроль з одного інтерфейсу.</p>
+          <div class="project-links">
+            <a href="https://t.me/Ce0portfolio/5" target="_blank" rel="noopener" class="project-link">
+              Демо <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card project-card reveal">
+        <div class="project-img">
+          <img src="assets/spread.png" alt="Crypto Price Spread Scanner" loading="lazy">
         </div>
         <div class="project-body">
           <h3 class="project-title">Crypto Price Spread Scanner</h3>
-          <p class="project-desc">Багатобіржовий арбітражний сканер, який виявляє розбіжності в цінах між безстроковими ф'ючерсами USDT.</p>
-          <div class="project-tags">
-            <span class="badge badge-accent">aiogram 3</span>
-            <span class="badge badge-accent">API</span>
-            <span class="badge badge-accent">Requests</span>
-          </div>
+          <p class="project-desc">Багатобіржовий арбітражний сканер, який автоматично виявляє розбіжності в цінах між безстроковими ф'ючерсами USDT та сповіщає в Telegram.</p>
           <div class="project-links">
-            <a href="https://github.com/bartos92/spread-scanner" class="project-link">
-              GitHub <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            <a href="https://github.com/bartos92/spread-scanner" target="_blank" rel="noopener" class="project-link">
+              Демо <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
             </a>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- STACK -->
-<section class="section" id="stack">
+<!-- HOW IT WORKS -->
+<section class="section process" id="process">
   <div class="container">
-    <p class="section-label">// стек</p>
-    <h2 class="section-title">Технології</h2>
-    <div class="stack-grid">
-      <div class="card stack-item">
-        <div class="stack-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-        </div>
-        <div>
-          <div class="stack-name">HTML / CSS / JS</div>
-          <div class="stack-detail">Лендинги, адаптив</div>
-        </div>
+    <p class="section-label reveal">// процес</p>
+    <h2 class="section-title reveal">Як проходить робота</h2>
+    <div class="process-grid">
+      <div class="card process-step reveal">
+        <span class="process-num">01</span>
+        <h3 class="process-title">Обговорення</h3>
+        <p class="process-desc">Ви описуєте бізнес, задачу та бажаний результат.</p>
+        <span class="process-arrow">→</span>
       </div>
-      <div class="card stack-item">
-        <div class="stack-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-        </div>
-        <div>
-          <div class="stack-name">Python</div>
-          <div class="stack-detail">aiogram 3, web3.py</div>
-        </div>
+      <div class="card process-step reveal">
+        <span class="process-num">02</span>
+        <h3 class="process-title">Пропозиція</h3>
+        <p class="process-desc">Я пропоную варіант реалізації, терміни та бюджет.</p>
+        <span class="process-arrow">→</span>
       </div>
-      <div class="card stack-item">
-        <div class="stack-icon">
-          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        </div>
-        <div>
-          <div class="stack-name">Telegram Bots</div>
-          <div class="stack-detail">aiogram 3, FSM, SQLite</div>
-        </div>
+      <div class="card process-step reveal">
+        <span class="process-num">03</span>
+        <h3 class="process-title">Розробка</h3>
+        <p class="process-desc">Створюю рішення, тестую функціонал та показую проміжний результат.</p>
+        <span class="process-arrow">→</span>
       </div>
-      <div class="card stack-item">
-        <div class="stack-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6v6l4 2"/></svg>
-        </div>
-        <div>
-          <div class="stack-name">AI / LLM</div>
-          <div class="stack-detail">Claude, Gemini API</div>
-        </div>
-      </div>
-      <div class="card stack-item">
-        <div class="stack-icon">
-          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-        </div>
-        <div>
-          <div class="stack-name">Web Scraping</div>
-          <div class="stack-detail">Парсинг, автоматизація</div>
-        </div>
-      </div>
-      <div class="card stack-item">
-        <div class="stack-icon">
-          <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-        </div>
-        <div>
-          <div class="stack-name">Web3</div>
-          <div class="stack-detail">Onchain</div>
-        </div>
+      <div class="card process-step reveal">
+        <span class="process-num">04</span>
+        <h3 class="process-title">Запуск</h3>
+        <p class="process-desc">Фінально тестуємо, запускаємо продукт та підключаємо необхідні сервіси.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ABOUT -->
-<section class="section" id="about" style="background: var(--bg-secondary);">
+<section class="section" id="about">
   <div class="container">
-    <p class="section-label">// про мене</p>
-    <h2 class="section-title">Vitalii Dehod</h2>
+    <p class="section-label reveal">// про мене</p>
+    <h2 class="section-title reveal">Vitalii Dehod</h2>
     <div class="about-content">
-      <div class="about-text">
-        <p>Спеціалізуюсь на AI агентах, Telegram-ботах з AI-інтеграцією та лендингах для малого бізнесу.</p>
-        <p>Магістр Комп'ютерних наук (ЗУНУ, 2026).</p>
-        <p>Моя перевага — комплексні рішення: клієнт отримує не просто сайт чи скрипт, а працюючу систему, вирішення певної неефективності та автоматизазацію.</p>
+      <div class="about-text reveal">
+        <p>Спеціалізуюсь на AI-агентах, Telegram-ботах, автоматизації та розробці сайтів для малого бізнесу.</p>
+        <p>Магістр комп'ютерних наук (ЗУНУ, 2026).</p>
+        <p>Створюю не просто сайти та ботів, а рішення під конкретну бізнес-задачу: автоматизацію комунікації, збір заявок, бронювання, продажі та внутрішні процеси.</p>
       </div>
-      <div class="about-stats">
+      <div class="about-stats reveal">
         <div class="card stat-card">
           <div class="stat-value">35+</div>
           <div class="stat-label">проєктів</div>
@@ -758,28 +1000,84 @@
           <div class="stat-value">23+</div>
           <div class="stat-label">клієнтів</div>
         </div>
-        <div class="card stat-card">
-          <div class="stat-value">6</div>
-          <div class="stat-label">стеки</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="container">
+    <p class="section-label reveal">// FAQ</p>
+    <h2 class="section-title reveal">Часті питання</h2>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-question" type="button" aria-expanded="false">
+          Скільки коштує розробка?
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Вартість залежить від функціоналу та складності проєкту. Після короткого опису задачі я можу дати попередню оцінку.</div>
         </div>
-        <div class="card stat-card">
-          <div class="stat-value">24/7</div>
-          <div class="stat-label">боти працюють</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" type="button" aria-expanded="false">
+          Скільки часу займає розробка?
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Залежить від проєкту. Простий лендинг або бот може займати кілька днів, складні рішення з AI та інтеграціями потребують більше часу. Точні терміни визначаються після обговорення задачі.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" type="button" aria-expanded="false">
+          Чи можна підключити AI до Instagram?
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Так, залежно від задачі та доступних інтеграцій можна автоматизувати частину комунікації з клієнтами в Instagram.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" type="button" aria-expanded="false">
+          Чи може бот передавати діалог менеджеру?
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Так. Можна визначити сценарії, коли AI припиняє автоматичну відповідь і передає запит живому менеджеру.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" type="button" aria-expanded="false">
+          Чи можна інтегрувати CRM або інші сервіси?
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Так. За наявності API можна інтегрувати бота або сайт із CRM, базами даних, платіжними сервісами та іншими системами.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" type="button" aria-expanded="false">
+          Чи надається підтримка після запуску?
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Так, формат підтримки та подальших оновлень можна погодити окремо.</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
+<!-- FINAL CTA -->
 <section class="cta-section" id="contact">
   <div class="container">
-    <div class="cta-box">
+    <div class="cta-box reveal">
       <p class="section-label">// контакт</p>
-      <h2 class="cta-title">Маєте проєкт?</h2>
-      <p class="cta-desc">Напишіть мені — обговоримо задачу і я запропоную рішення протягом 24 годин.</p>
+      <h2 class="cta-title">Є задача, яку можна автоматизувати?</h2>
+      <p class="cta-desc">Опишіть ваш бізнес і задачу — я запропоную варіант реалізації та попередньо оціню вартість.</p>
       <a href="https://telegram.me/Vittttalik" class="btn btn-primary" target="_blank" rel="noopener">
-        Написати в Telegram
+        Обговорити проєкт
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
       <div class="cta-links">
@@ -791,7 +1089,6 @@
           <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           vitalii.bart@icloud.com
         </a>
-        
       </div>
     </div>
   </div>
@@ -799,37 +1096,80 @@
 
 <!-- FOOTER -->
 <footer class="footer">
-  <div class="container">
-    &copy; 2026 Vitalii Dehod. Тернопіль, Україна.
+  <div class="container footer-inner">
+    <div>&copy; 2026 Vitalii Dehod</div>
+    <div class="footer-links">
+      <a href="https://telegram.me/Vittttalik" target="_blank" rel="noopener">Telegram</a>
+      <a href="https://github.com/bartos92" target="_blank" rel="noopener">GitHub</a>
+      <a href="mailto:vitalii.bart@icloud.com">Email</a>
+    </div>
   </div>
 </footer>
 
 <!-- SCRIPTS -->
 <script>
-  document.getElementById('header').classList.toggle('scrolled', window.scrollY > 20);
-  window.addEventListener('scroll', function() {
-    document.getElementById('header').classList.toggle('scrolled', window.scrollY > 20);
-  }, { passive: true });
+  // Header scrolled state
+  var header = document.getElementById('header');
+  function updateHeader() {
+    header.classList.toggle('scrolled', window.scrollY > 20);
+  }
+  updateHeader();
+  window.addEventListener('scroll', updateHeader, { passive: true });
 
-  document.getElementById('burger').addEventListener('click', function() {
-    document.getElementById('navLinks').classList.toggle('open');
+  // Mobile burger menu
+  var burger = document.getElementById('burger');
+  var navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', function() {
+    navLinks.classList.toggle('open');
   });
-
-  document.querySelectorAll('.nav-links a').forEach(function(link) {
+  navLinks.querySelectorAll('a').forEach(function(link) {
     link.addEventListener('click', function() {
-      document.getElementById('navLinks').classList.remove('open');
+      navLinks.classList.remove('open');
     });
   });
 
+  // Smooth scroll with header offset
   document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
     anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      var target = document.querySelector(this.getAttribute('href'));
+      var href = this.getAttribute('href');
+      if (href === '#' || href.length < 2) return;
+      var target = document.querySelector(href);
       if (target) {
+        e.preventDefault();
         window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
       }
     });
   });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(function(item) {
+    var btn = item.querySelector('.faq-question');
+    var answer = item.querySelector('.faq-answer');
+    btn.addEventListener('click', function() {
+      var isOpen = item.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      if (isOpen) {
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      } else {
+        answer.style.maxHeight = null;
+      }
+    });
+  });
+
+  // Reveal on scroll (light IntersectionObserver)
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('visible'); });
+  }
 </script>
 </body>
 </html>
