@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI-боти, Telegram-боти та розробка сайтів — Vitalii Dehod</title>
+  <meta name="description" content="Розробка AI-агентів, Telegram-ботів та лендингів для бізнесу. Автоматизація комунікації з клієнтами, заявок, бронювання та бізнес-процесів.">
+  <link rel="canonical" href="https://bartos92.github.io/portfolio/">
+  <meta name="theme-color" content="#F7F6F3">
+  <meta property="og:title" content="AI-боти, Telegram-боти та розробка сайтів — Vitalii Dehod">
+  <meta property="og:description" content="Розробка AI-агентів, Telegram-ботів та лендингів для бізнесу. Автоматизація комунікації з клієнтами, заявок, бронювання та бізнес-процесів.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bartos92.github.io/portfolio/">
+  <meta property="og:image" content="https://bartos92.github.io/portfolio/assets/vitalii-720.jpg">
+  <meta property="og:locale" content="uk_UA">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230D0E11'/%3E%3Ctext x='16' y='21.5' font-family='Arial' font-weight='700' font-size='14' fill='%23fff' text-anchor='middle'%3EVD%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Vitalii Dehod",
+    "jobTitle": "Web Developer & AI Automation",
+    "url": "https://bartos92.github.io/portfolio/",
+    "email": "mailto:vitalii.bart@icloud.com",
+    "address": { "@type": "PostalAddress", "addressLocality": "Тернопіль", "addressCountry": "UA" },
+    "sameAs": ["https://github.com/bartos92", "https://telegram.me/Vittttalik"]
+  }
+  </script>
+  <style>
+    /* ================= TOKENS ================= */
+    :root {
+      --bg: #F7F6F3;
+      --bg-alt: #EFEEEA;
+      --surface: #FFFFFF;
+      --ink: #0D0E11;
+      --ink-2: #2B2D33;
+      --muted: #5F626B;
+      --faint: #8E9099;
+      --line: #E4E2DC;
+      --line-strong: #D3D0C9;
+      --accent: #2D5BFF;
+      --accent-ink: #1F45D6;
+      --accent-soft: #E8EDFF;
+      --tg: #229ED9;
+      --green: #18A957;
+      --green-soft: #E3F5EA;
+
+      --f-display: 'Unbounded', 'Onest', system-ui, sans-serif;
+      --f-body: 'Onest', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --f-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+      --container: 1200px;
+      --gutter: 24px;
+      --r-sm: 10px;
+      --r: 16px;
+      --r-lg: 28px;
+      --shadow-sm: 0 1px 2px rgba(13,14,17,.04), 0 2px 8px rgba(13,14,17,.04);
+      --shadow: 0 1px 2px rgba(13,14,17,.04), 0 12px 32px -12px rgba(13,14,17,.14);
+      --shadow-lg: 0 2px 4px rgba(13,14,17,.04), 0 30px 60px -20px rgba(13,14,17,.22);
+      --ease: cubic-bezier(.2,.7,.2,1);
+      --t: 220ms var(--ease);
+      --header-h: 68px;
+    }
+
+    /* ================= RESET ================= */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 12px); -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: var(--f-body);
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--muted);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img, video { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul, ol { list-style: none; }
+    button { font: inherit; color: inherit; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    .skip-link { position: absolute; left: 16px; top: -60px; z-index: 300; background: var(--ink); color: #fff; padding: 10px 16px; border-radius: var(--r-sm); }
+    .skip-link:focus { top: 12px; }
+
+    /* ================= LAYOUT ================= */
+    .container { width: 100%; max-width: calc(var(--container) + var(--gutter) * 2); margin: 0 auto; padding: 0 var(--gutter); }
+    .section { padding: 120px 0; }
+    .section--alt { background: var(--bg-alt); }
+    .section-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; margin-bottom: 56px; }
+    .section-head > div { max-width: 680px; }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--f-mono); font-size: 12px; font-weight: 500;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--accent);
+      margin-bottom: 18px;
+    }
+    .eyebrow::before { content: ''; width: 18px; height: 1px; background: currentColor; }
+    h1, h2, h3 { color: var(--ink); font-weight: 500; }
+    .title {
+      font-family: var(--f-display);
+      font-size: clamp(30px, 3.7vw, 50px);
+      line-height: 1.08; letter-spacing: -.035em;
+    }
+    .lead { font-size: 18px; line-height: 1.65; color: var(--muted); margin-top: 18px; max-width: 620px; }
+
+    /* ================= BUTTONS ================= */
+    .btn {
+      --h: 52px;
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      height: var(--h); padding: 0 24px; border-radius: 999px;
+      font-size: 16px; font-weight: 500; line-height: 1; white-space: nowrap;
+      border: 1px solid transparent; cursor: pointer;
+      transition: background-color var(--t), color var(--t), border-color var(--t), transform var(--t), box-shadow var(--t);
+    }
+    .btn svg { width: 18px; height: 18px; flex-shrink: 0; transition: transform var(--t); }
+    .btn:hover svg.arrow { transform: translateX(3px); }
+    .btn:active { transform: translateY(1px); }
+    .btn-dark { background: var(--ink); color: #fff; box-shadow: 0 8px 20px -8px rgba(13,14,17,.5); }
+    .btn-dark:hover { background: #24262c; }
+    .btn-tg { background: var(--tg); color: #fff; box-shadow: 0 10px 24px -10px rgba(34,158,217,.8); }
+    .btn-tg:hover { background: #1b8cc2; }
+    .btn-ghost { background: var(--surface); color: var(--ink); border-color: var(--line); }
+    .btn-ghost:hover { border-color: var(--ink); }
+    .btn-white { background: #fff; color: var(--ink); }
+    .btn-white:hover { background: #ECEBE7; }
+    .btn-line-light { background: transparent; color: #fff; border-color: rgba(255,255,255,.22); }
+    .btn-line-light:hover { border-color: #fff; }
+    .btn-sm { --h: 42px; padding: 0 18px; font-size: 15px; }
+
+    .tag {
+      display: inline-flex; align-items: center; height: 26px; padding: 0 10px;
+      border-radius: 999px; font-family: var(--f-mono); font-size: 11.5px; font-weight: 500;
+      letter-spacing: .02em; color: var(--ink-2); background: var(--bg-alt); border: 1px solid var(--line);
+    }
+
+    /* ================= HEADER ================= */
+    .header {
+      position: fixed; inset: 0 0 auto 0; z-index: 100; height: var(--header-h);
+      transition: background-color var(--t), box-shadow var(--t), backdrop-filter var(--t);
+    }
+    .header.scrolled {
+      background: rgba(247,246,243,.82);
+      backdrop-filter: saturate(160%) blur(14px); -webkit-backdrop-filter: saturate(160%) blur(14px);
+      box-shadow: 0 1px 0 var(--line);
+    }
+    .nav { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .logo { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; color: var(--ink); font-size: 16px; letter-spacing: -.01em; }
+    .logo-mark {
+      width: 34px; height: 34px; border-radius: 10px; background: var(--ink); color: #fff;
+      display: grid; place-items: center; font-family: var(--f-display); font-size: 12px; font-weight: 600; letter-spacing: .02em;
+    }
+    .logo small { display: block; font-size: 12px; font-weight: 400; color: var(--faint); margin-top: 1px; }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a:not(.btn) {
+      font-size: 15px; color: var(--muted); padding: 8px 12px; border-radius: 999px;
+      transition: color var(--t), background-color var(--t);
+    }
+    .nav-links a:not(.btn):hover { color: var(--ink); }
+    .nav-links a.active { color: var(--ink); background: rgba(13,14,17,.05); }
+    .nav-links .btn { margin-left: 10px; }
+    .burger {
+      display: none; width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--line);
+      background: var(--surface); cursor: pointer; position: relative;
+    }
+    .burger span { position: absolute; left: 13px; right: 13px; height: 1.5px; background: var(--ink); border-radius: 2px; transition: transform var(--t), opacity var(--t); }
+    .burger span:nth-child(1) { top: 16px; } .burger span:nth-child(2) { top: 21px; } .burger span:nth-child(3) { top: 26px; }
+    .burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(5px) rotate(45deg); }
+    .burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
+
+    /* ================= HERO ================= */
+    .hero { position: relative; padding: calc(var(--header-h) + 72px) 0 56px; overflow: hidden; }
+    .hero::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none; z-index: -1;
+      background:
+        radial-gradient(600px 380px at 82% 18%, rgba(45,91,255,.10), transparent 70%),
+        radial-gradient(520px 360px at 8% 0%, rgba(255,170,110,.12), transparent 70%);
+    }
+    .hero::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none; z-index: -1;
+      background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 64px 64px; opacity: .45;
+      -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 75%);
+              mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 75%);
+    }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: 64px; align-items: center; }
+    .status {
+      display: inline-flex; align-items: center; gap: 10px; height: 36px; padding: 0 14px 0 12px;
+      border-radius: 999px; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow-sm);
+      font-size: 14px; color: var(--ink-2); margin-bottom: 28px;
+    }
+    .status-dot { position: relative; width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
+    .status-dot::after { content: ''; position: absolute; inset: -4px; border-radius: 50%; background: var(--green); opacity: .25; animation: ping 2.2s var(--ease) infinite; }
+    @keyframes ping { 0% { transform: scale(.6); opacity: .45; } 80%, 100% { transform: scale(1.8); opacity: 0; } }
+    .hero h1 {
+      font-family: var(--f-display);
+      font-size: clamp(36px, 5.1vw, 70px);
+      line-height: 1.02; letter-spacing: -.045em; font-weight: 500;
+    }
+    .hero h1 .soft { color: var(--faint); }
+    .hero h1 .accent { color: var(--accent); }
+    .hero-desc { font-size: 19px; line-height: 1.6; margin-top: 26px; max-width: 560px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 28px; font-size: 14.5px; color: var(--muted); }
+    .hero-meta span { display: inline-flex; align-items: center; gap: 8px; }
+    .hero-meta svg { width: 16px; height: 16px; color: var(--green); }
+    .hero-meta b { color: var(--ink); font-weight: 600; }
+
+    .hero-visual { position: relative; justify-self: end; width: 100%; max-width: 420px; }
+    .hero-photo {
+      position: relative; aspect-ratio: 4 / 5; border-radius: var(--r-lg); overflow: hidden;
+      background: #d9d6cf; box-shadow: var(--shadow-lg);
+    }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(13,14,17,.35)); }
+    .float-card {
+      position: absolute; background: rgba(255,255,255,.94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,.7); border-radius: 18px; box-shadow: var(--shadow-lg);
+    }
+    .contact-card { left: -36px; bottom: 28px; right: 36px; display: flex; align-items: center; gap: 14px; padding: 14px 14px 14px 18px; }
+    .contact-card .who { flex: 1; min-width: 0; }
+    .contact-card strong { display: block; color: var(--ink); font-weight: 600; font-size: 16px; line-height: 1.3; }
+    .contact-card span { font-size: 13.5px; color: var(--muted); }
+    .contact-card .round-tg {
+      width: 48px; height: 48px; border-radius: 50%; background: var(--tg); color: #fff; display: grid; place-items: center; flex-shrink: 0;
+      transition: transform var(--t), background-color var(--t);
+    }
+    .contact-card .round-tg:hover { transform: scale(1.06); background: #1b8cc2; }
+    .contact-card .round-tg svg { width: 22px; height: 22px; margin-left: -2px; }
+
+    .usp { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 88px; }
+    .usp-item { display: flex; gap: 16px; padding: 22px; border-radius: var(--r); background: rgba(255,255,255,.7); border: 1px solid var(--line); }
+    .usp-icon { width: 42px; height: 42px; border-radius: 12px; background: var(--ink); color: #fff; display: grid; place-items: center; flex-shrink: 0; }
+    .usp-icon svg { width: 20px; height: 20px; }
+    .usp-item h3 { font-size: 16px; font-weight: 600; line-height: 1.35; margin-bottom: 4px; }
+    .usp-item p { font-size: 14.5px; line-height: 1.5; }
+
+    /* ================= SERVICES ================= */
+    .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .service {
+      position: relative; display: flex; flex-direction: column; padding: 36px; border-radius: var(--r-lg);
+      background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow-sm); overflow: hidden;
+      transition: box-shadow var(--t), transform var(--t);
+    }
+    .service:hover { box-shadow: var(--shadow); }
+    .service-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 24px; }
+    .service-badge {
+      display: inline-flex; align-items: center; gap: 8px; height: 32px; padding: 0 12px; border-radius: 999px;
+      font-family: var(--f-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase;
+    }
+    .service--ai .service-badge { background: var(--accent-soft); color: var(--accent); }
+    .service--web .service-badge { background: #FFF0E4; color: #C2560F; }
+    .service-badge svg { width: 15px; height: 15px; }
+    .service-price { font-size: 14px; color: var(--muted); }
+    .service-price b { color: var(--ink); font-weight: 600; }
+    .service h3 { font-family: var(--f-display); font-size: clamp(24px, 2.3vw, 30px); letter-spacing: -.03em; line-height: 1.12; }
+    .service > p { margin-top: 12px; font-size: 16.5px; max-width: 480px; }
+    .service-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin: 28px 0 32px; background: var(--line); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; }
+    .service-list li { background: var(--surface); padding: 16px 18px; transition: background-color var(--t); }
+    .service-list li:hover { background: #FBFAF8; }
+    .service-list strong { display: block; color: var(--ink); font-weight: 600; font-size: 15.5px; margin-bottom: 3px; }
+    .service-list span { display: block; font-size: 14px; line-height: 1.45; }
+    .service-cta { margin-top: auto; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+    .service-cta small { font-size: 14px; color: var(--faint); }
+
+    /* ================= SITES SLIDER ================= */
+    .work { padding: 120px 0 112px; overflow: hidden; }
+    .work-title { font-family: var(--f-display); font-size: clamp(48px, 8vw, 112px); line-height: .95; letter-spacing: -.05em; font-weight: 500; color: var(--ink); }
+    .work-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; margin-bottom: 48px; }
+    .work-head .lead { margin-top: 20px; }
+    .slider-ctrl { display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+    .slider-count { font-family: var(--f-mono); font-size: 13px; color: var(--faint); min-width: 64px; text-align: right; }
+    .slider-count b { color: var(--ink); font-weight: 500; }
+    .ctrl-btn {
+      width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--line-strong); background: var(--surface);
+      display: grid; place-items: center; cursor: pointer; color: var(--ink);
+      transition: background-color var(--t), color var(--t), border-color var(--t), opacity var(--t);
+    }
+    .ctrl-btn:hover:not(:disabled) { background: var(--ink); color: #fff; border-color: var(--ink); }
+    .ctrl-btn:disabled { opacity: .35; cursor: default; }
+    .ctrl-btn svg { width: 20px; height: 20px; }
+
+    .slider { position: relative; }
+    .track {
+      --pad: max(var(--gutter), calc((100vw - var(--container)) / 2));
+      display: flex; gap: 28px; overflow-x: auto; overscroll-behavior-x: contain;
+      scroll-snap-type: x mandatory; scroll-padding-inline: var(--pad);
+      padding: 8px var(--pad) 24px; scrollbar-width: none; cursor: grab;
+    }
+    .track::-webkit-scrollbar { display: none; }
+    .track.dragging { cursor: grabbing; scroll-snap-type: none; }
+    .track.dragging * { pointer-events: none; user-select: none; }
+    .slide { flex: 0 0 min(640px, 84vw); scroll-snap-align: start; }
+    .slide-frame {
+      position: relative; padding: 14px 14px 0; border-radius: var(--r-lg); overflow: hidden;
+      background: var(--g, linear-gradient(120deg, #ddd, #bbb));
+      box-shadow: var(--shadow); transition: transform 500ms var(--ease), box-shadow 500ms var(--ease);
+    }
+    .slide-frame::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(120% 70% at 50% 0%, rgba(255,255,255,.35), transparent 60%);
+    }
+    .slide-media {
+      position: relative; aspect-ratio: 16 / 9; border-radius: 16px 16px 0 0; overflow: hidden; background: #e9e7e2;
+      box-shadow: 0 -1px 0 rgba(255,255,255,.4), 0 10px 30px rgba(0,0,0,.18);
+    }
+    .slide-media video, .slide-media img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 700ms var(--ease); }
+    .slide:hover .slide-frame { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .slide:hover .slide-media video, .slide:hover .slide-media img { transform: scale(1.025); }
+    .slide-browser { position: absolute; top: 12px; left: 14px; display: flex; gap: 6px; z-index: 2; }
+    .slide-browser i { width: 9px; height: 9px; border-radius: 50%; background: rgba(13,14,17,.18); }
+    .slide-chip {
+      position: absolute; right: 14px; top: 10px; z-index: 2; height: 26px; padding: 0 10px; border-radius: 999px;
+      display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; color: var(--ink);
+      background: rgba(255,255,255,.88); backdrop-filter: blur(6px);
+    }
+    .slide-chip .rec { width: 6px; height: 6px; border-radius: 50%; background: #E5484D; }
+    .slide-body { padding: 26px 4px 0; }
+    .slide-body h3 { font-family: var(--f-display); font-size: clamp(22px, 2vw, 28px); letter-spacing: -.03em; line-height: 1.15; }
+    .slide-body p { margin-top: 8px; font-size: 16px; line-height: 1.55; max-width: 560px; }
+    .slide-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; margin-top: 18px; }
+    .slide-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .link-arrow { display: inline-flex; align-items: center; gap: 6px; font-weight: 500; color: var(--ink); font-size: 15px; padding: 6px 0; border-bottom: 1px solid var(--line-strong); transition: border-color var(--t), gap var(--t); }
+    .link-arrow:hover { border-color: var(--ink); gap: 9px; }
+    .link-arrow svg { width: 16px; height: 16px; }
+
+    .slide--cta .slide-frame { background: var(--ink); }
+    .slide--cta .slide-frame::before { background: radial-gradient(80% 60% at 80% 10%, rgba(45,91,255,.45), transparent 65%), radial-gradient(60% 50% at 10% 100%, rgba(255,140,90,.25), transparent 60%); }
+    .cta-inner { position: relative; aspect-ratio: 16 / 9; padding: 26px 26px 30px; display: flex; flex-direction: column; justify-content: space-between; color: rgba(255,255,255,.7); }
+    .cta-inner .eyebrow { color: #9DB2FF; }
+    .cta-inner h3 { color: #fff; font-family: var(--f-display); font-size: clamp(24px, 2.6vw, 36px); line-height: 1.1; letter-spacing: -.035em; }
+    .cta-inner p { margin-top: 12px; font-size: 16px; max-width: 420px; }
+
+    .progress { margin-top: 28px; height: 2px; background: var(--line); border-radius: 2px; overflow: hidden; }
+    .progress span { display: block; height: 100%; width: 25%; background: var(--ink); transform-origin: left; transition: transform 200ms linear; }
+
+    /* ================= AI DEMO ================= */
+    .demo-grid { display: grid; grid-template-columns: minmax(260px, 340px) minmax(0, 1fr); gap: 80px; align-items: center; }
+    .phone-wrap { position: relative; display: flex; justify-content: center; }
+    .phone-wrap::before {
+      content: ''; position: absolute; width: 100%; aspect-ratio: 1; left: 0; top: 50%; transform: translateY(-50%);
+      background: radial-gradient(circle, rgba(45,91,255,.16), transparent 62%); pointer-events: none;
+    }
+    .phone {
+      position: relative; width: 100%; max-width: 300px; aspect-ratio: 9 / 19.5; padding: 10px;
+      background: linear-gradient(145deg, #34353a 0%, #1b1b1e 45%, #0f0f10 100%);
+      border-radius: 52px;
+      box-shadow: 0 0 0 1px rgba(255,255,255,.05) inset, 0 0 0 2px #0a0a0b, 0 40px 80px -24px rgba(13,14,17,.55), 0 14px 30px -10px rgba(13,14,17,.3);
+    }
+    .phone::before { content: ''; position: absolute; inset: 6px; border-radius: 46px; border: 1px solid rgba(255,255,255,.07); pointer-events: none; z-index: 2; }
+    .phone::after { content: ''; position: absolute; top: 18px; left: 50%; transform: translateX(-50%); width: 92px; height: 26px; background: #000; border-radius: 50px; z-index: 3; }
+    .phone video { width: 100%; height: 100%; object-fit: cover; border-radius: 42px; background: #000; }
+
+    .flow { position: relative; margin: 32px 0 36px; display: grid; gap: 8px; }
+    .flow::before { content: ''; position: absolute; left: 27px; top: 28px; bottom: 28px; width: 1px; background: var(--line-strong); }
+    .flow-step {
+      position: relative; display: grid; grid-template-columns: 56px 1fr auto; align-items: center; gap: 4px 14px;
+      padding: 12px 18px 12px 8px; border-radius: var(--r); border: 1px solid transparent;
+      transition: background-color 400ms var(--ease), border-color 400ms var(--ease), box-shadow 400ms var(--ease);
+    }
+    .flow-ico {
+      position: relative; z-index: 1; width: 40px; height: 40px; margin-left: 7px; border-radius: 12px;
+      background: var(--surface); border: 1px solid var(--line-strong); color: var(--muted);
+      display: grid; place-items: center; transition: background-color 400ms var(--ease), color 400ms var(--ease), border-color 400ms var(--ease);
+    }
+    .flow-ico svg { width: 18px; height: 18px; }
+    .flow-text { color: var(--ink); font-weight: 500; font-size: 16px; line-height: 1.35; }
+    .flow-text small { display: block; font-weight: 400; color: var(--muted); font-size: 14px; margin-top: 2px; }
+    .flow-role { font-family: var(--f-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--faint); }
+    .flow-step.is-active { background: var(--surface); border-color: var(--line); box-shadow: var(--shadow); }
+    .flow-step.is-active .flow-ico { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .flow-step[data-role="client"].is-active .flow-ico { background: var(--ink); border-color: var(--ink); }
+    .flow-step[data-role="manager"].is-active .flow-ico { background: var(--green); border-color: var(--green); }
+    .demo-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+    /* ================= PRICING ================= */
+    .pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .price-card {
+      position: relative; display: flex; flex-direction: column; padding: 28px 24px; border-radius: var(--r-lg);
+      background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow-sm);
+    }
+    .price-card h3 { font-size: 17px; font-weight: 600; line-height: 1.3; }
+    .price-card .for { font-size: 14px; margin-top: 6px; line-height: 1.45; min-height: 42px; }
+    .price { font-family: var(--f-display); font-size: 34px; letter-spacing: -.04em; color: var(--ink); margin: 22px 0 4px; line-height: 1.05; font-weight: 500; }
+    .price small { font-family: var(--f-body); font-size: 15px; letter-spacing: 0; color: var(--muted); font-weight: 400; }
+    .price-term { font-family: var(--f-mono); font-size: 12px; color: var(--faint); }
+    .price-list { margin: 22px 0 26px; padding-top: 20px; border-top: 1px dashed var(--line-strong); display: grid; gap: 10px; }
+    .price-list li { display: flex; gap: 10px; font-size: 14.5px; line-height: 1.45; color: var(--ink-2); }
+    .price-list svg { width: 16px; height: 16px; color: var(--green); flex-shrink: 0; margin-top: 2px; }
+    .price-card .btn { margin-top: auto; width: 100%; }
+    .price-card--featured { background: var(--ink); border-color: var(--ink); color: rgba(255,255,255,.7); box-shadow: var(--shadow-lg); }
+    .price-card--featured h3, .price-card--featured .price { color: #fff; }
+    .price-card--featured .price small, .price-card--featured .price-term { color: rgba(255,255,255,.55); }
+    .price-card--featured .price-list { border-color: rgba(255,255,255,.18); }
+    .price-card--featured .price-list li { color: rgba(255,255,255,.85); }
+    .price-card--featured .price-list svg { color: #7CE3A6; }
+    .ribbon { position: absolute; top: -12px; left: 24px; font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; padding: 6px 10px; border-radius: 999px; background: var(--accent); color: #fff; box-shadow: 0 6px 16px -6px rgba(45,91,255,.7); }
+    .terms {
+      margin-top: 20px; padding: 22px 26px; border-radius: var(--r-lg); background: var(--surface); border: 1px solid var(--line);
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px;
+    }
+    .terms ul { display: grid; grid-template-columns: repeat(2, auto); gap: 10px 40px; }
+    .terms li { display: flex; align-items: center; gap: 8px; font-size: 15px; color: var(--ink-2); }
+    .terms li svg { width: 18px; height: 18px; color: var(--green); }
+
+    /* ================= PROCESS ================= */
+    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; counter-reset: step; position: relative; }
+    .process-grid::before { content: ''; position: absolute; top: 27px; left: 28px; right: 28px; height: 1px; background: var(--line-strong); }
+    .step { position: relative; padding-right: 28px; }
+    .step-num {
+      position: relative; width: 56px; height: 56px; border-radius: 50%; background: var(--surface); border: 1px solid var(--line-strong);
+      display: grid; place-items: center; font-family: var(--f-display); font-size: 16px; color: var(--ink); margin-bottom: 26px;
+      transition: background-color var(--t), color var(--t), border-color var(--t);
+    }
+    .step:hover .step-num { background: var(--ink); color: #fff; border-color: var(--ink); }
+    .step h3 { font-size: 19px; font-weight: 600; line-height: 1.3; margin-bottom: 10px; }
+    .step p { font-size: 15px; line-height: 1.55; }
+    .step-note { display: inline-flex; margin-top: 14px; font-family: var(--f-mono); font-size: 11.5px; color: var(--ink-2); background: var(--surface); border: 1px solid var(--line); padding: 5px 10px; border-radius: 999px; }
+
+    /* ================= ABOUT ================= */
+    .about-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 72px; align-items: start; }
+    .about-text p:not(.eyebrow) { font-size: 18px; line-height: 1.7; margin-top: 18px; }
+    .about-text p strong { color: var(--ink); font-weight: 600; }
+    .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .stat { padding: 26px; border-radius: var(--r-lg); background: var(--surface); border: 1px solid var(--line); }
+    .stat b { display: block; font-family: var(--f-display); font-size: 44px; line-height: 1; letter-spacing: -.05em; color: var(--ink); font-weight: 500; }
+    .stat span { display: block; margin-top: 10px; font-size: 14.5px; }
+    .stat--wide { grid-column: 1 / -1; display: flex; align-items: center; gap: 18px; }
+    .stat--wide b { font-size: 28px; }
+    .stat--wide span { margin-top: 0; }
+    .stack { margin-top: 12px; padding: 24px 26px; border-radius: var(--r-lg); background: var(--surface); border: 1px solid var(--line); }
+    .stack-label { font-family: var(--f-mono); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); margin-bottom: 14px; }
+    .stack .slide-tags { gap: 8px; }
+
+    /* ================= FAQ ================= */
+    .faq-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 72px; align-items: start; }
+    .faq-aside { position: sticky; top: calc(var(--header-h) + 32px); }
+    .faq-aside .btn { margin-top: 28px; }
+    .faq-list { border-top: 1px solid var(--line-strong); }
+    .faq-item { border-bottom: 1px solid var(--line-strong); }
+    .faq-q {
+      width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; text-align: left;
+      padding: 24px 0; background: none; border: 0; cursor: pointer; color: var(--ink); font-size: 18px; font-weight: 500; line-height: 1.4;
+    }
+    .faq-q:hover .faq-plus { background: var(--ink); color: #fff; border-color: var(--ink); }
+    .faq-plus {
+      position: relative; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line-strong); flex-shrink: 0;
+      transition: background-color var(--t), color var(--t), border-color var(--t), transform 300ms var(--ease);
+    }
+    .faq-plus::before, .faq-plus::after { content: ''; position: absolute; left: 50%; top: 50%; width: 12px; height: 1.5px; background: currentColor; transform: translate(-50%, -50%); border-radius: 2px; }
+    .faq-plus::after { transform: translate(-50%, -50%) rotate(90deg); transition: transform 300ms var(--ease); }
+    .faq-item.open .faq-plus { transform: rotate(180deg); background: var(--ink); color: #fff; border-color: var(--ink); }
+    .faq-item.open .faq-plus::after { transform: translate(-50%, -50%) rotate(0deg); }
+    .faq-a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 320ms var(--ease); }
+    .faq-item.open .faq-a { grid-template-rows: 1fr; }
+    .faq-a > div { overflow: hidden; }
+    .faq-a p { padding: 0 56px 26px 0; font-size: 16.5px; line-height: 1.65; }
+
+    /* ================= CONTACT ================= */
+    .contact { padding: 40px 0 120px; }
+    .contact-box {
+      position: relative; overflow: hidden; border-radius: 36px; background: var(--ink); color: rgba(255,255,255,.66);
+      padding: 72px; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 64px; align-items: center;
+    }
+    .contact-box::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(600px 400px at 100% 0%, rgba(45,91,255,.35), transparent 65%), radial-gradient(500px 300px at 0% 100%, rgba(255,140,90,.16), transparent 60%);
+    }
+    .contact-box > * { position: relative; }
+    .contact-box .eyebrow { color: #9DB2FF; }
+    .contact-box h2 { color: #fff; font-family: var(--f-display); font-size: clamp(28px, 3.4vw, 46px); line-height: 1.05; letter-spacing: -.04em; }
+    .contact-box .lead { color: rgba(255,255,255,.66); }
+    .contact-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
+    .contact-links { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 28px; font-size: 15px; }
+    .contact-links a { display: inline-flex; align-items: center; gap: 8px; color: rgba(255,255,255,.75); transition: color var(--t); }
+    .contact-links a:hover { color: #fff; }
+    .contact-links svg { width: 18px; height: 18px; }
+    .brief { padding: 28px; border-radius: 24px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); }
+    .brief h3 { color: #fff; font-size: 17px; font-weight: 600; margin-bottom: 18px; }
+    .brief ol { display: grid; gap: 14px; counter-reset: b; }
+    .brief li { counter-increment: b; display: grid; grid-template-columns: 30px 1fr; gap: 12px; font-size: 15.5px; line-height: 1.5; color: rgba(255,255,255,.82); }
+    .brief li::before { content: counter(b, decimal-leading-zero); font-family: var(--f-mono); font-size: 12px; color: #9DB2FF; padding-top: 3px; }
+    .brief .note { margin-top: 20px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.12); font-size: 14px; color: rgba(255,255,255,.55); }
+
+    /* ================= FOOTER ================= */
+    .footer { border-top: 1px solid var(--line); padding: 56px 0 110px; font-size: 15px; }
+    .footer-grid { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 40px; }
+    .footer-brand p { margin-top: 16px; max-width: 320px; font-size: 14.5px; line-height: 1.6; }
+    .footer h4 { font-family: var(--f-mono); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); font-weight: 500; margin-bottom: 16px; }
+    .footer ul { display: grid; gap: 10px; }
+    .footer ul a { color: var(--ink-2); transition: color var(--t); }
+    .footer ul a:hover { color: var(--accent); }
+    .footer-bottom { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 13.5px; color: var(--faint); }
+
+    /* ================= FLOATING LEAD BUTTON ================= */
+    .lead-btn {
+      position: fixed; right: 24px; bottom: calc(24px + env(safe-area-inset-bottom)); z-index: 95;
+      display: flex; align-items: center; gap: 12px; padding: 6px; border-radius: 999px;
+      background: var(--ink); color: #fff; box-shadow: 0 18px 40px -12px rgba(13,14,17,.55), 0 0 0 1px rgba(255,255,255,.06) inset;
+      transition: transform 300ms var(--ease), box-shadow 300ms var(--ease);
+      animation: leadIn 600ms var(--ease) 800ms both;
+    }
+    .lead-btn:hover { transform: translateY(-3px); box-shadow: 0 24px 48px -12px rgba(13,14,17,.6); }
+    .lead-avatar { width: 48px; height: 48px; flex-shrink: 0; }
+    .lead-avatar img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid rgba(255,255,255,.14); }
+    .lead-text { display: flex; flex-direction: column; line-height: 1.2; padding-right: 6px; }
+    .lead-text strong { font-size: 16px; font-weight: 600; letter-spacing: -.01em; }
+    .lead-text span { display: inline-flex; align-items: center; gap: 7px; font-size: 13.5px; color: rgba(255,255,255,.72); margin-top: 3px; }
+    .lead-text span::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 3px rgba(24,169,87,.25); }
+    .lead-go { width: 48px; height: 48px; border-radius: 50%; background: var(--accent); display: grid; place-items: center; flex-shrink: 0; transition: background-color var(--t); }
+    .lead-go svg { width: 20px; height: 20px; transition: transform var(--t); }
+    .lead-btn:hover .lead-go { background: var(--accent-ink); }
+    .lead-btn:hover .lead-go svg { transform: translateX(2px); }
+    @keyframes leadIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+
+    /* ================= SCROLL PROGRESS ================= */
+    .scroll-line { position: fixed; left: 0; right: 0; top: var(--header-h); height: 2px; z-index: 101; pointer-events: none; --p: 0; }
+    .scroll-line::before { content: ''; position: absolute; inset: 0; background: var(--line); }
+    .scroll-line-fill { position: absolute; inset: 0; background: linear-gradient(90deg, var(--accent), #6E8BFF); transform-origin: left; transform: scaleX(var(--p)); }
+    .scroll-line-dot {
+      position: absolute; top: 50%; left: calc(var(--p) * 100%);
+      width: 26px; height: 26px; margin-top: -13px; border-radius: 50%;
+      transform: translateX(calc(var(--p) * -100%));
+      background: var(--accent); color: #fff; display: grid; place-items: center;
+      box-shadow: 0 0 0 3px rgba(255,255,255,.9), 0 6px 14px -4px rgba(45,91,255,.7);
+    }
+    .scroll-line-dot svg { width: 14px; height: 14px; }
+
+    /* ================= REVEAL ================= */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 700ms var(--ease), transform 700ms var(--ease); transition-delay: var(--d, 0ms); }
+    .reveal.visible { opacity: 1; transform: none; }
+    .no-js .reveal { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+
+    /* ================= RESPONSIVE ================= */
+    @media (max-width: 1180px) {
+      .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+      .price-card .for { min-height: 0; }
+      .contact-box { padding: 56px; gap: 48px; }
+    }
+    @media (max-width: 1024px) {
+      .section { padding: 96px 0; }
+      .work { padding: 96px 0; }
+      .hero-grid { gap: 48px; }
+      .contact-card { left: -20px; right: 20px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .demo-grid { gap: 48px; }
+      .about-grid, .faq-grid { grid-template-columns: 1fr; gap: 48px; }
+      .faq-aside { position: static; }
+      .contact-box { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 900px) {
+      .nav-links {
+        position: fixed; top: var(--header-h); left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 2px;
+        padding: 12px var(--gutter) 24px; background: rgba(247,246,243,.98); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--line); box-shadow: 0 20px 40px -20px rgba(13,14,17,.2);
+        opacity: 0; visibility: hidden; transform: translateY(-8px); transition: opacity var(--t), transform var(--t), visibility var(--t);
+      }
+      .nav-links.open { opacity: 1; visibility: visible; transform: none; }
+      .nav-links a:not(.btn) { font-size: 18px; padding: 14px 4px; border-radius: 0; border-bottom: 1px solid var(--line); color: var(--ink); }
+      .nav-links a.active { background: none; }
+      .nav-links .btn { margin: 16px 0 0; --h: 54px; }
+      .burger { display: block; }
+      .header.menu-open { background: rgba(247,246,243,.98); box-shadow: 0 1px 0 var(--line); }
+
+      .hero { padding-top: calc(var(--header-h) + 40px); }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-visual { justify-self: center; max-width: 380px; margin-top: 8px; }
+      .usp { grid-template-columns: 1fr; margin-top: 64px; }
+      .demo-grid { grid-template-columns: 1fr; }
+      .phone { max-width: 270px; }
+      .process-grid { grid-template-columns: 1fr 1fr; gap: 40px 24px; }
+      .process-grid::before { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 720px) {
+      :root { --gutter: 20px; --header-h: 62px; }
+      body { font-size: 16px; }
+      .section { padding: 80px 0; }
+      .work { padding: 80px 0; }
+      .section-head, .work-head { flex-direction: column; align-items: flex-start; margin-bottom: 36px; }
+      .work-head .slider-ctrl { display: none; }
+      .lead { font-size: 16.5px; }
+      .hero h1 { font-size: clamp(32px, 9.4vw, 44px); }
+      .hero-desc { font-size: 17px; }
+      .hero-actions .btn { flex: 1 1 100%; }
+      .contact-card { left: 12px; right: 12px; bottom: 12px; }
+      .service { padding: 26px 22px; }
+      .service-top { flex-direction: column; align-items: flex-start; }
+      .service-list { grid-template-columns: 1fr; }
+      .service-cta .btn { flex: 1 1 100%; }
+      .slide { flex-basis: 86vw; }
+      .track { gap: 16px; }
+      .slide-frame { padding: 10px 10px 0; border-radius: 22px; }
+      .slide-media { border-radius: 12px 12px 0 0; }
+      .slide-browser { display: none; }
+      .cta-inner { padding: 14px 12px 18px; }
+      .cta-inner h3 { font-size: 22px; }
+      .cta-inner p { font-size: 14.5px; margin-top: 8px; }
+      .cta-inner .eyebrow { margin-bottom: 10px; }
+      .cta-inner .btn { --h: 44px; }
+      .flow-step { grid-template-columns: 52px 1fr; padding-right: 12px; }
+      .flow-role { display: none; }
+      .flow::before { left: 25px; }
+      .flow-ico { margin-left: 5px; }
+      .demo-actions .btn { flex: 1 1 100%; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .terms { padding: 20px; }
+      .terms ul { grid-template-columns: 1fr; }
+      .terms .btn { width: 100%; }
+      .process-grid { grid-template-columns: 1fr; gap: 0; }
+      .step { display: grid; grid-template-columns: 56px 1fr; gap: 0 18px; padding: 0 0 32px; }
+      .step::before { content: ''; position: absolute; left: 27px; top: 56px; bottom: 0; width: 1px; background: var(--line-strong); }
+      .step:last-child::before { display: none; }
+      .step-num { grid-row: span 3; margin-bottom: 0; }
+      .step h3 { padding-top: 14px; }
+      .step-note { justify-self: start; }
+      .stat b { font-size: 38px; }
+      .faq-q { font-size: 16.5px; padding: 20px 0; }
+      .faq-a p { padding-right: 0; font-size: 15.5px; }
+      .contact { padding: 16px 0 96px; }
+      .contact-box { padding: 40px 22px; border-radius: 28px; }
+      .contact-actions .btn { flex: 1 1 100%; }
+      .brief { padding: 22px; }
+      .footer { padding-bottom: 96px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px 20px; }
+      .lead-btn { left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom)); }
+      .lead-text { flex: 1; }
+      .lead-avatar, .lead-go { width: 44px; height: 44px; }
+      .scroll-line-dot { width: 22px; height: 22px; margin-top: -11px; }
+      .scroll-line-dot svg { width: 12px; height: 12px; }
+    }
+    @media (max-width: 380px) {
+      .stats { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body class="no-js">
+
+<a href="#main" class="skip-link">До змісту</a>
+
+<!-- SVG sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-ext" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-tg" viewBox="0 0 24 24"><path fill="currentColor" d="M21.94 4.3a1.2 1.2 0 0 0-1.62-1.33L2.9 9.66c-.98.38-.96 1.79.04 2.13l4.3 1.47 1.66 5.12c.25.76 1.2 1 1.78.45l2.4-2.27 4.42 3.25c.7.52 1.71.13 1.88-.73L21.94 4.3ZM9.4 13.15l8.12-5.1-6.53 6.13-.27 2.8-1.32-3.83Z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></g></symbol>
+    <symbol id="i-gh" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></symbol>
+    <symbol id="i-bot" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 8V4M9 13v1M15 13v1M2 14v2M22 14v2"/></g></symbol>
+    <symbol id="i-layout" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18M9 20V9"/></g></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/></g></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 0 0-14.9-3.5M4 4v4h4"/><path d="M4 13a8 8 0 0 0 14.9 3.5M20 20v-4h-4"/></g></symbol>
+    <symbol id="i-msg" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1.1-4.6A8 8 0 1 1 21 12Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></g></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5Z"/><path d="M4 19a2 2 0 0 1 2-2h13"/></g></symbol>
+    <symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 5h16l-6 7v6l-4 2v-8L4 5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-clip" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M9 11h6M9 15h4"/></g></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></g></symbol>
+    <symbol id="i-pdf" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5M12 12v6M9.5 15.5 12 18l2.5-2.5"/></g></symbol>
+  </defs>
+</svg>
+
+<!-- ============ HEADER ============ -->
+<header class="header" id="header">
+  <nav class="nav container" aria-label="Головна навігація">
+    <a href="#top" class="logo" aria-label="Vitalii Dehod — на початок">
+      <span class="logo-mark" aria-hidden="true">VD</span>
+      <span>Vitalii Dehod<small>Web &amp; AI Automation</small></span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#services">Послуги</a>
+      <a href="#work">Сайти</a>
+      <a href="#ai-demo">AI-боти</a>
+      <a href="#pricing">Ціни</a>
+      <a href="#process">Процес</a>
+      <a href="#faq">FAQ</a>
+      <a href="https://telegram.me/Vittttalik" class="btn btn-dark btn-sm" target="_blank" rel="noopener">
+        Обговорити проєкт <svg class="arrow"><use href="#i-arrow"/></svg>
+      </a>
+    </div>
+    <button class="burger" id="burger" type="button" aria-label="Відкрити меню" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="status reveal"><span class="status-dot" aria-hidden="true"></span>Доступний для нових проєктів</div>
+        <h1 class="reveal" style="--d:60ms">Сайти та AI&#8209;боти, <span class="soft">які приймають заявки</span> <span class="accent">замість&nbsp;вас</span></h1>
+        <p class="hero-desc reveal" style="--d:120ms">Розробляю AI-агентів, Telegram-ботів та сучасні сайти для бізнесу. Автоматизую спілкування з клієнтами, заявки та рутинні процеси.</p>
+        <div class="hero-actions reveal" style="--d:180ms">
+          <a href="https://telegram.me/Vittttalik" class="btn btn-tg" target="_blank" rel="noopener">
+            <svg><use href="#i-tg"/></svg> Обговорити проєкт
+          </a>
+          <a href="#work" class="btn btn-ghost">Переглянути роботи <svg class="arrow"><use href="#i-arrow"/></svg></a>
+        </div>
+        <div class="hero-meta reveal" style="--d:240ms">
+          <span><svg><use href="#i-check"/></svg>Лендинг — від <b>$130</b></span>
+          <span><svg><use href="#i-check"/></svg>Telegram-бот — від <b>$100</b></span>
+          <span><svg><use href="#i-check"/></svg>Вихідний код — ваш</span>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal" style="--d:160ms">
+        <div class="hero-photo">
+          <picture>
+            <source srcset="assets/vitalii.webp" type="image/webp">
+            <img src="assets/vitalii-720.jpg" alt="Віталій Дегод — розробник сайтів та AI-ботів" width="720" height="960" fetchpriority="high">
+          </picture>
+        </div>
+        <div class="float-card contact-card">
+          <div class="who">
+            <strong>Віталій, розробник</strong>
+            <span>Web &amp; AI · Тернопіль</span>
+          </div>
+          <a href="https://telegram.me/Vittttalik" class="round-tg" target="_blank" rel="noopener" aria-label="Написати в Telegram"><svg><use href="#i-tg"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="usp">
+      <div class="usp-item reveal">
+        <div class="usp-icon"><svg><use href="#i-layers"/></svg></div>
+        <div><h3>Сайт + бот + AI в одних руках</h3><p>Один розробник на весь пакет — без узгоджень між підрядниками.</p></div>
+      </div>
+      <div class="usp-item reveal" style="--d:80ms">
+        <div class="usp-icon"><svg><use href="#i-code"/></svg></div>
+        <div><h3>Вихідний код передається вам</h3><p>Продукт повністю належить вашому бізнесу.</p></div>
+      </div>
+      <div class="usp-item reveal" style="--d:160ms">
+        <div class="usp-icon"><svg><use href="#i-refresh"/></svg></div>
+        <div><h3>3 раунди правок у ціні</h3><p>Доводимо результат до того, що вам підходить.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow reveal">Послуги</p>
+        <h2 class="title reveal">Два напрямки — одна мета: більше заявок</h2>
+        <p class="lead reveal">AI-автоматизація комунікації та сайти, які презентують бізнес і генерують заявки. Можна окремо, можна в зв'язці.</p>
+      </div>
+    </div>
+
+    <div class="services-grid">
+      <article class="service service--ai reveal">
+        <div class="service-top">
+          <span class="service-badge"><svg><use href="#i-bot"/></svg>AI Automation</span>
+          <span class="service-price">від <b>$100</b> · 3–10 днів</span>
+        </div>
+        <h3>AI-боти та агенти</h3>
+        <p>Бот відповідає клієнтам, збирає заявки та бронювання, а менеджер підключається лише там, де справді потрібна людина.</p>
+        <ul class="service-list">
+          <li><strong>AI-агенти</strong><span>Відповідають на основі інформації вашого бізнесу</span></li>
+          <li><strong>Telegram-боти</strong><span>Заявки, запис, оплата і меню послуг у месенджері</span></li>
+          <li><strong>Instagram-автоматизація</strong><span>Частина комунікації в Direct без затримок</span></li>
+          <li><strong>AI-підтримка клієнтів</strong><span>Перша лінія 24/7, складне — менеджеру</span></li>
+          <li><strong>Кваліфікація лідів</strong><span>Бот уточнює потребу та збирає контакти</span></li>
+          <li><strong>CRM та API інтеграції</strong><span>Дані потрапляють у ваші системи автоматично</span></li>
+        </ul>
+        <div class="service-cta">
+          <a href="https://telegram.me/Vittttalik" class="btn btn-dark" target="_blank" rel="noopener">Обговорити AI-рішення <svg class="arrow"><use href="#i-arrow"/></svg></a>
+          <a href="#ai-demo" class="link-arrow">Як це працює <svg><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+
+      <article class="service service--web reveal" style="--d:80ms">
+        <div class="service-top">
+          <span class="service-badge"><svg><use href="#i-layout"/></svg>Web Development</span>
+          <span class="service-price">від <b>$130</b> · 3–14 днів</span>
+        </div>
+        <h3>Сайти та лендинги</h3>
+        <p>Сучасні швидкі сайти для презентації бізнесу та отримання заявок — коректно виглядають на телефоні, планшеті й десктопі.</p>
+        <ul class="service-list">
+          <li><strong>Лендинги</strong><span>Одна сторінка під одну пропозицію і заявку</span></li>
+          <li><strong>Бізнес-сайти</strong><span>Презентація послуг, яка викликає довіру</span></li>
+          <li><strong>Корпоративні сайти</strong><span>Багатосторінкова структура для компанії</span></li>
+          <li><strong>Каталоги продукції</strong><span>Товари й категорії зі зручною навігацією</span></li>
+          <li><strong>CMS-інтеграція</strong><span>Ви самі редагуєте контент без розробника</span></li>
+          <li><strong>Адаптивна розробка</strong><span>Мобілка, планшет, десктоп + базове SEO</span></li>
+        </ul>
+        <div class="service-cta">
+          <a href="https://telegram.me/Vittttalik" class="btn btn-dark" target="_blank" rel="noopener">Обговорити сайт <svg class="arrow"><use href="#i-arrow"/></svg></a>
+          <a href="#work" class="link-arrow">Дивитись сайти <svg><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SITES SLIDER ============ -->
+<section class="work section--alt" id="work" aria-labelledby="work-title">
+  <div class="container">
+    <div class="work-head">
+      <div>
+        <p class="eyebrow reveal">Портфоліо · сайти</p>
+        <h2 class="work-title reveal" id="work-title">Сайти</h2>
+        <p class="lead reveal">Лендинги, де дизайн і анімація працюють на впізнаваність бренду та ведуть відвідувача до заявки.</p>
+      </div>
+      <div class="slider-ctrl reveal">
+        <span class="slider-count" aria-live="polite"><b id="slideCur">01</b> / <span id="slideTotal">04</span></span>
+        <button class="ctrl-btn" id="prevBtn" type="button" aria-label="Попередній проєкт"><svg><use href="#i-left"/></svg></button>
+        <button class="ctrl-btn" id="nextBtn" type="button" aria-label="Наступний проєкт"><svg><use href="#i-arrow"/></svg></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="slider reveal">
+    <div class="track" id="track" tabindex="0" role="region" aria-label="Слайдер сайтів — гортайте горизонтально">
+
+      <article class="slide">
+        <div class="slide-frame" style="--g: linear-gradient(120deg, #F6A56B 0%, #E8536B 55%, #A94BD6 100%)">
+          <div class="slide-media">
+            <div class="slide-chip"><span class="rec"></span>Відео</div>
+            <video data-src="assets/aethon.mp4" poster="assets/aethon.webp" muted loop playsinline preload="none" aria-label="Запис лендингу AETHON"></video>
+          </div>
+        </div>
+        <div class="slide-body">
+          <h3>AETHON — лендинг бренду парфумів</h3>
+          <p>Анімований hero на скролі працює на впізнаваність бренду краще за статичне фото.</p>
+          <div class="slide-foot">
+            <div class="slide-tags"><span class="tag">Landing</span><span class="tag">GSAP</span><span class="tag">ScrollTrigger</span></div>
+            <a href="https://t.me/Ce0portfolio/18" class="link-arrow" target="_blank" rel="noopener">Демо <svg><use href="#i-ext"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="slide">
+        <div class="slide-frame" style="--g: linear-gradient(120deg, #2D5BFF 0%, #5AA8FF 55%, #8FE3FF 100%)">
+          <div class="slide-media">
+            <div class="slide-chip"><span class="rec"></span>Відео</div>
+            <video data-src="assets/motors.mp4" poster="assets/motors.webp" muted loop playsinline preload="none" aria-label="Запис лендингу Ternopil Motors"></video>
+          </div>
+        </div>
+        <div class="slide-body">
+          <h3>Ternopil Motors — концепт-лендинг автобренду</h3>
+          <p>При наведенні в зоні курсора чорна машина плавно переходить у білу, з м'яким фейдом по краях.</p>
+          <div class="slide-foot">
+            <div class="slide-tags"><span class="tag">Landing</span><span class="tag">GSAP</span><span class="tag">Hover reveal</span></div>
+            <a href="https://bartos92.github.io/car-hover-landing/" class="link-arrow" target="_blank" rel="noopener">Демо <svg><use href="#i-ext"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="slide">
+        <div class="slide-frame" style="--g: linear-gradient(120deg, #2FAE6E 0%, #B9DE5E 60%, #FFB648 100%)">
+          <div class="slide-media">
+            <img src="assets/freshbox.webp" alt="Лендинг FreshBox — сервіс доставки продуктових наборів" width="1228" height="942" loading="lazy">
+          </div>
+        </div>
+        <div class="slide-body">
+          <h3>FreshBox — лендинг сервісу доставки</h3>
+          <p>Чіткий оффер, знижка на перше замовлення і 4 кроки «як це працює» ведуть відвідувача до замовлення.</p>
+          <div class="slide-foot">
+            <div class="slide-tags"><span class="tag">Landing</span><span class="tag">Адаптив</span><span class="tag">Конверсійна структура</span></div>
+            <a href="https://telegram.me/Vittttalik" class="link-arrow" target="_blank" rel="noopener">Хочу схожий <svg><use href="#i-arrow"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="slide slide--cta">
+        <div class="slide-frame">
+          <div class="cta-inner">
+            <div>
+              <p class="eyebrow">Наступний проєкт</p>
+              <h3>Тут може бути<br>ваш сайт</h3>
+              <p>Опишіть бізнес і задачу — запропоную структуру, терміни та попередню вартість.</p>
+            </div>
+            <div><a href="https://telegram.me/Vittttalik" class="btn btn-white" target="_blank" rel="noopener"><svg><use href="#i-tg"/></svg> Обговорити сайт</a></div>
+          </div>
+        </div>
+        <div class="slide-body">
+          <h3>Ваш бізнес</h3>
+          <p>Лендинг, бізнес-сайт, каталог або сайт + Telegram-бот під ключ.</p>
+        </div>
+      </article>
+
+    </div>
+    <div class="container"><div class="progress" aria-hidden="true"><span id="progressBar"></span></div></div>
+  </div>
+</section>
+
+<!-- ============ AI DEMO ============ -->
+<section class="section" id="ai-demo">
+  <div class="container">
+    <div class="demo-grid">
+      <div class="phone-wrap reveal">
+        <div class="phone">
+          <video data-src="assets/agent.mp4" poster="assets/agent.webp" muted loop playsinline preload="none" aria-label="Запис діалогу клієнта з AI-агентом у Telegram"></video>
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow reveal">AI Automation · живе демо</p>
+        <h2 class="title reveal">Як AI-агент працює з клієнтами</h2>
+        <p class="lead reveal">AI-агент може працювати як перша лінія комунікації з клієнтами: відповідати на типові питання, консультувати, збирати дані та передавати складні запити менеджеру.</p>
+
+        <ol class="flow reveal" id="flow">
+          <li class="flow-step" data-role="client"><span class="flow-ico"><svg><use href="#i-msg"/></svg></span><span class="flow-text">Клієнт пише повідомлення<small>У Telegram або Instagram, у будь-який час</small></span><span class="flow-role">Клієнт</span></li>
+          <li class="flow-step" data-role="ai"><span class="flow-ico"><svg><use href="#i-search"/></svg></span><span class="flow-text">AI визначає запит<small>Розуміє, що саме потрібно клієнту</small></span><span class="flow-role">AI-агент</span></li>
+          <li class="flow-step" data-role="ai"><span class="flow-ico"><svg><use href="#i-book"/></svg></span><span class="flow-text">Відповідає на основі інформації бізнесу<small>Асортимент, ціни, умови — з ваших даних</small></span><span class="flow-role">AI-агент</span></li>
+          <li class="flow-step" data-role="ai"><span class="flow-ico"><svg><use href="#i-filter"/></svg></span><span class="flow-text">Кваліфікує клієнта<small>Уточнює потребу та готовність</small></span><span class="flow-role">AI-агент</span></li>
+          <li class="flow-step" data-role="ai"><span class="flow-ico"><svg><use href="#i-clip"/></svg></span><span class="flow-text">Збирає заявку / створює бронювання<small>Контакти, адреса доставки, деталі</small></span><span class="flow-role">AI-агент</span></li>
+          <li class="flow-step" data-role="manager"><span class="flow-ico"><svg><use href="#i-user"/></svg></span><span class="flow-text">За необхідності передає менеджеру<small>Складні запити — живій людині</small></span><span class="flow-role">Менеджер</span></li>
+        </ol>
+
+        <div class="demo-actions reveal">
+          <a href="https://telegram.me/Vittttalik" class="btn btn-dark" target="_blank" rel="noopener">Хочу такого бота <svg class="arrow"><use href="#i-arrow"/></svg></a>
+          <a href="#pricing" class="btn btn-ghost">Скільки коштує</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section class="section section--alt" id="pricing">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow reveal">Ціни</p>
+        <h2 class="title reveal">Скільки коштує</h2>
+        <p class="lead reveal">Орієнтовні ціни. Точну вартість назву після короткого опису задачі — безкоштовно і без зобов'язань.</p>
+      </div>
+    </div>
+
+    <div class="pricing-grid">
+      <article class="price-card reveal">
+        <h3>Лендинг / сайт</h3>
+        <p class="for">Верстка за вашим макетом або сайт під ключ із дизайном</p>
+        <div class="price">від $130</div>
+        <div class="price-term">3–14 днів</div>
+        <ul class="price-list">
+          <li><svg><use href="#i-check"/></svg>Адаптив: мобілка + десктоп</li>
+          <li><svg><use href="#i-check"/></svg>Базове SEO</li>
+          <li><svg><use href="#i-check"/></svg>Під ключ з дизайном — $500</li>
+        </ul>
+        <a href="https://telegram.me/Vittttalik" class="btn btn-ghost" target="_blank" rel="noopener">Обговорити</a>
+      </article>
+
+      <article class="price-card reveal" style="--d:60ms">
+        <h3>AI-асистент / бот</h3>
+        <p class="for">Бот-візитка на кнопках або AI-консультант на базі Claude</p>
+        <div class="price">$100–500</div>
+        <div class="price-term">3–10 днів</div>
+        <ul class="price-list">
+          <li><svg><use href="#i-check"/></svg>Відповіді на часті питання</li>
+          <li><svg><use href="#i-check"/></svg>AI знає ваш асортимент і ціни</li>
+          <li><svg><use href="#i-check"/></svg>Передача менеджеру</li>
+        </ul>
+        <a href="https://telegram.me/Vittttalik" class="btn btn-ghost" target="_blank" rel="noopener">Обговорити</a>
+      </article>
+
+      <article class="price-card price-card--featured reveal" style="--d:120ms">
+        <span class="ribbon">Комплекс</span>
+        <h3>Лендинг + Telegram-бот</h3>
+        <p class="for">Готовий інструмент продажів під ключ</p>
+        <div class="price">$500–800</div>
+        <div class="price-term">7–14 днів</div>
+        <ul class="price-list">
+          <li><svg><use href="#i-check"/></svg>Лендинг під ключ + бот</li>
+          <li><svg><use href="#i-check"/></svg>Збір заявок або запис клієнтів</li>
+          <li><svg><use href="#i-check"/></svg>Один підрядник на все</li>
+        </ul>
+        <a href="https://telegram.me/Vittttalik" class="btn btn-white" target="_blank" rel="noopener"><svg><use href="#i-tg"/></svg> Обговорити</a>
+      </article>
+
+      <article class="price-card reveal" style="--d:180ms">
+        <h3>Підтримка</h3>
+        <p class="for">Для сайтів і ботів після запуску</p>
+        <div class="price">$50<small> / міс</small></div>
+        <div class="price-term">до 5 год роботи на місяць</div>
+        <ul class="price-list">
+          <li><svg><use href="#i-check"/></svg>Оновлення контенту та правки</li>
+          <li><svg><use href="#i-check"/></svg>Моніторинг працездатності</li>
+          <li><svg><use href="#i-check"/></svg>Консультації</li>
+        </ul>
+        <a href="https://telegram.me/Vittttalik" class="btn btn-ghost" target="_blank" rel="noopener">Обговорити</a>
+      </article>
+    </div>
+
+    <div class="terms reveal">
+      <ul>
+        <li><svg><use href="#i-check"/></svg>Передоплата 50%, решта після затвердження</li>
+        <li><svg><use href="#i-check"/></svg>3 раунди правок включено</li>
+        <li><svg><use href="#i-check"/></svg>Вихідний код — замовнику</li>
+        <li><svg><use href="#i-check"/></svg>Банківський переказ або USDT</li>
+      </ul>
+      <a href="price.pdf" class="btn btn-ghost btn-sm" target="_blank" rel="noopener"><svg><use href="#i-pdf"/></svg> Повний прайс (PDF)</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="section" id="process">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow reveal">Процес</p>
+        <h2 class="title reveal">Як проходить робота</h2>
+        <p class="lead reveal">Прозорі етапи: ви завжди знаєте, що відбувається з проєктом і скільки він коштуватиме.</p>
+      </div>
+    </div>
+    <ol class="process-grid">
+      <li class="step reveal">
+        <div class="step-num">01</div>
+        <h3>Обговорення і вимоги</h3>
+        <p>Ви описуєте бізнес, задачу та бажаний результат.</p>
+        <span class="step-note">Telegram · безкоштовно</span>
+      </li>
+      <li class="step reveal" style="--d:80ms">
+        <div class="step-num">02</div>
+        <h3>Пропозиція і план</h3>
+        <p>Пропоную варіант реалізації, терміни та бюджет.</p>
+        <span class="step-note">Передоплата 50%</span>
+      </li>
+      <li class="step reveal" style="--d:160ms">
+        <div class="step-num">03</div>
+        <h3>Розробка</h3>
+        <p>Створюю рішення, тестую функціонал та показую проміжний результат.</p>
+        <span class="step-note">3 раунди правок</span>
+      </li>
+      <li class="step reveal" style="--d:240ms">
+        <div class="step-num">04</div>
+        <h3>Тестування і запуск</h3>
+        <p>Фінально тестуємо, запускаємо продукт та підключаємо необхідні сервіси.</p>
+        <span class="step-note">Код передається вам</span>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="section section--alt" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="eyebrow reveal">Про мене</p>
+        <h2 class="title reveal">Привіт, я Віталій</h2>
+        <p class="reveal">Спеціалізуюсь на <strong>AI-агентах, Telegram-ботах, автоматизації та розробці сайтів</strong> для малого бізнесу.</p>
+        <p class="reveal">Створюю не просто сайти та ботів, а рішення під конкретну бізнес-задачу: автоматизацію комунікації, збір заявок, бронювання, продажі та внутрішні процеси.</p>
+        <p class="reveal">Сайт, Telegram-бот і AI-агент можу зробити в одному пакеті — ви працюєте з однією людиною, яка відповідає за весь результат.</p>
+      </div>
+      <div>
+        <div class="stats reveal">
+          <div class="stat"><b>35+</b><span>проєктів</span></div>
+          <div class="stat"><b>23+</b><span>клієнтів</span></div>
+          <div class="stat stat--wide"><b>MSc</b><span>Магістр комп'ютерних наук · ЗУНУ, 2026</span></div>
+        </div>
+        <div class="stack reveal">
+          <p class="stack-label">Стек</p>
+          <div class="slide-tags">
+            <span class="tag">Python</span><span class="tag">aiogram 3</span><span class="tag">Claude API</span><span class="tag">Gemini API</span>
+            <span class="tag">Next.js</span><span class="tag">Strapi</span><span class="tag">GSAP</span><span class="tag">Playwright</span>
+            <span class="tag">BeautifulSoup</span><span class="tag">web3.py</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="faq-grid">
+      <div class="faq-aside">
+        <p class="eyebrow reveal">FAQ</p>
+        <h2 class="title reveal">Часті питання</h2>
+        <p class="lead reveal">Не знайшли відповідь? Напишіть — відповім і підкажу, з чого краще почати.</p>
+        <a href="https://telegram.me/Vittttalik" class="btn btn-dark reveal" target="_blank" rel="noopener"><svg><use href="#i-tg"/></svg> Поставити питання</a>
+      </div>
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-1" id="faq-q-1">Скільки коштує розробка?<span class="faq-plus" aria-hidden="true"></span></button>
+          <div class="faq-a" id="faq-1" role="region" aria-labelledby="faq-q-1"><div><p>Вартість залежить від функціоналу та складності проєкту. Орієнтири — у розділі «Ціни». Після короткого опису задачі я можу дати попередню оцінку.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-2" id="faq-q-2">Скільки часу займає розробка?<span class="faq-plus" aria-hidden="true"></span></button>
+          <div class="faq-a" id="faq-2" role="region" aria-labelledby="faq-q-2"><div><p>Залежить від проєкту. Простий лендинг або бот може займати кілька днів, складні рішення з AI та інтеграціями потребують більше часу. Точні терміни визначаються після обговорення задачі.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-3" id="faq-q-3">Чи можна підключити AI до Instagram?<span class="faq-plus" aria-hidden="true"></span></button>
+          <div class="faq-a" id="faq-3" role="region" aria-labelledby="faq-q-3"><div><p>Так, залежно від задачі та доступних інтеграцій можна автоматизувати частину комунікації з клієнтами в Instagram.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-4" id="faq-q-4">Чи може бот передавати діалог менеджеру?<span class="faq-plus" aria-hidden="true"></span></button>
+          <div class="faq-a" id="faq-4" role="region" aria-labelledby="faq-q-4"><div><p>Так. Можна визначити сценарії, коли AI припиняє автоматичну відповідь і передає запит живому менеджеру.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-5" id="faq-q-5">Чи можна інтегрувати CRM або інші сервіси?<span class="faq-plus" aria-hidden="true"></span></button>
+          <div class="faq-a" id="faq-5" role="region" aria-labelledby="faq-q-5"><div><p>Так. За наявності API можна інтегрувати бота або сайт із CRM, базами даних, платіжними сервісами та іншими системами.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-6" id="faq-q-6">Як відбувається оплата?<span class="faq-plus" aria-hidden="true"></span></button>
+          <div class="faq-a" id="faq-6" role="region" aria-labelledby="faq-q-6"><div><p>Передоплата 50%, решта — після затвердження результату. Оплата банківським переказом або в USDT. 3 раунди правок уже включено в ціну.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-7" id="faq-q-7">Чи надається підтримка після запуску?<span class="faq-plus" aria-hidden="true"></span></button>
+          <div class="faq-a" id="faq-7" role="region" aria-labelledby="faq-q-7"><div><p>Так. Є щомісячна підтримка за $50/міс (до 5 годин роботи), або формат оновлень можна погодити окремо.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-box reveal">
+      <div>
+        <p class="eyebrow">Контакт</p>
+        <h2>Є задача, яку можна автоматизувати?</h2>
+        <p class="lead">Опишіть ваш бізнес і задачу — я запропоную варіант реалізації та попередньо оціню вартість.</p>
+        <div class="contact-actions">
+          <a href="https://telegram.me/Vittttalik" class="btn btn-tg" target="_blank" rel="noopener"><svg><use href="#i-tg"/></svg> Написати в Telegram</a>
+          <a href="mailto:vitalii.bart@icloud.com" class="btn btn-line-light"><svg><use href="#i-mail"/></svg> Написати на email</a>
+        </div>
+        <div class="contact-links">
+          <a href="https://telegram.me/Vittttalik" target="_blank" rel="noopener"><svg><use href="#i-tg"/></svg>@Vittttalik</a>
+          <a href="mailto:vitalii.bart@icloud.com"><svg><use href="#i-mail"/></svg>vitalii.bart@icloud.com</a>
+          <a href="https://github.com/bartos92" target="_blank" rel="noopener"><svg><use href="#i-gh"/></svg>GitHub</a>
+        </div>
+      </div>
+      <div class="brief">
+        <h3>Що написати в першому повідомленні</h3>
+        <ol>
+          <li>Чим займається ваш бізнес</li>
+          <li>Яку задачу треба вирішити: сайт, бот або автоматизація</li>
+          <li>Бажаний термін і орієнтовний бюджет</li>
+        </ol>
+        <p class="note">Цього достатньо для попередньої оцінки. Далі — пропозиція з термінами й ціною.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#top" class="logo"><span class="logo-mark" aria-hidden="true">VD</span><span>Vitalii Dehod<small>Web &amp; AI Automation</small></span></a>
+        <p>AI-агенти, Telegram-боти та сайти для бізнесу. Тернопіль, Україна.</p>
+      </div>
+      <div>
+        <h4>Послуги</h4>
+        <ul>
+          <li><a href="#services">AI-боти та агенти</a></li>
+          <li><a href="#services">Сайти та лендинги</a></li>
+          <li><a href="#pricing">Ціни</a></li>
+          <li><a href="price.pdf" target="_blank" rel="noopener">Прайс (PDF)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Навігація</h4>
+        <ul>
+          <li><a href="#work">Сайти</a></li>
+          <li><a href="#process">Процес</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Контакти</h4>
+        <ul>
+          <li><a href="https://telegram.me/Vittttalik" target="_blank" rel="noopener">Telegram</a></li>
+          <li><a href="mailto:vitalii.bart@icloud.com">Email</a></li>
+          <li><a href="https://github.com/bartos92" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Vitalii Dehod</span>
+      <a href="#top">Нагору ↑</a>
+    </div>
+  </div>
+</footer>
+
+<a href="https://telegram.me/Vittttalik" class="lead-btn" target="_blank" rel="noopener" aria-label="Залишити заявку в Telegram">
+  <span class="lead-avatar"><img src="assets/avatar.webp" alt="" width="48" height="48"></span>
+  <span class="lead-text"><strong>Залишити заявку</strong><span>пишіть у Telegram</span></span>
+  <span class="lead-go" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span>
+</a>
+
+<div class="scroll-line" id="scrollLine" aria-hidden="true">
+  <div class="scroll-line-fill"></div>
+  <div class="scroll-line-dot"><svg><use href="#i-bot"/></svg></div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  document.body.classList.remove('no-js');
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasIO = 'IntersectionObserver' in window;
+
+  /* ---------- Header state ---------- */
+  var header = document.getElementById('header');
+  var line = document.getElementById('scrollLine');
+  var ticking = false;
+  function onScroll() {
+    var y = window.scrollY;
+    header.classList.toggle('scrolled', y > 12);
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    line.style.setProperty('--p', max > 0 ? Math.min(1, Math.max(0, y / max)).toFixed(4) : 0);
+    ticking = false;
+  }
+  onScroll();
+  window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  window.addEventListener('resize', onScroll);
+
+  /* ---------- Mobile menu ---------- */
+  var burger = document.getElementById('burger');
+  var navLinks = document.getElementById('navLinks');
+  function setMenu(open) {
+    navLinks.classList.toggle('open', open);
+    header.classList.toggle('menu-open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burger.setAttribute('aria-label', open ? 'Закрити меню' : 'Відкрити меню');
+  }
+  burger.addEventListener('click', function () { setMenu(!navLinks.classList.contains('open')); });
+  navLinks.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+
+  /* ---------- Active nav link ---------- */
+  if (hasIO) {
+    var navMap = {};
+    navLinks.querySelectorAll('a[href^="#"]').forEach(function (a) { navMap[a.getAttribute('href').slice(1)] = a; });
+    var secObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting && navMap[en.target.id]) {
+          Object.keys(navMap).forEach(function (k) { navMap[k].classList.remove('active'); });
+          navMap[en.target.id].classList.add('active');
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    document.querySelectorAll('main section[id]').forEach(function (s) { secObs.observe(s); });
+  }
+
+  /* ---------- Reveal ---------- */
+  var reveals = document.querySelectorAll('.reveal');
+  if (hasIO && !reduceMotion) {
+    var revObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('visible'); revObs.unobserve(en.target); }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(function (el) { revObs.observe(el); });
+  } else {
+    reveals.forEach(function (el) { el.classList.add('visible'); });
+  }
+
+  /* ---------- Lazy videos: load & play only when visible ---------- */
+  var videos = document.querySelectorAll('video[data-src]');
+  function loadVideo(v) { if (!v.src) { v.src = v.getAttribute('data-src'); v.load(); } }
+  if (hasIO) {
+    var vidObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        var v = en.target;
+        if (en.isIntersecting) {
+          loadVideo(v);
+          if (!reduceMotion) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+        } else if (!v.paused) { v.pause(); }
+      });
+    }, { threshold: 0.35 });
+    videos.forEach(function (v) { vidObs.observe(v); });
+  } else {
+    videos.forEach(function (v) { loadVideo(v); v.autoplay = !reduceMotion; });
+  }
+
+  /* ---------- Sites slider ---------- */
+  var track = document.getElementById('track');
+  var slides = Array.prototype.slice.call(track.querySelectorAll('.slide'));
+  var prevBtn = document.getElementById('prevBtn');
+  var nextBtn = document.getElementById('nextBtn');
+  var cur = document.getElementById('slideCur');
+  var bar = document.getElementById('progressBar');
+  document.getElementById('slideTotal').textContent = String(slides.length).padStart(2, '0');
+
+  function step() { return slides.length > 1 ? slides[1].offsetLeft - slides[0].offsetLeft : track.clientWidth; }
+  function currentIndex() { return Math.round(track.scrollLeft / step()); }
+  function updateSlider() {
+    var max = track.scrollWidth - track.clientWidth;
+    var idx = Math.min(slides.length - 1, Math.max(0, currentIndex()));
+    if (track.scrollLeft >= max - 4) idx = slides.length - 1;
+    cur.textContent = String(idx + 1).padStart(2, '0');
+    prevBtn.disabled = track.scrollLeft <= 4;
+    nextBtn.disabled = track.scrollLeft >= max - 4;
+    var ratio = max > 0 ? track.scrollLeft / max : 0;
+    var w = 1 / slides.length;
+    bar.style.width = (w * 100) + '%';
+    bar.style.transform = 'translateX(' + (ratio * (slides.length - 1) * 100) + '%)';
+  }
+  function go(dir) { track.scrollBy({ left: dir * step(), behavior: reduceMotion ? 'auto' : 'smooth' }); }
+  prevBtn.addEventListener('click', function () { go(-1); });
+  nextBtn.addEventListener('click', function () { go(1); });
+  track.addEventListener('scroll', function () { window.requestAnimationFrame(updateSlider); }, { passive: true });
+  window.addEventListener('resize', updateSlider);
+  track.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') { e.preventDefault(); go(1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1); }
+  });
+  updateSlider();
+
+  // Mouse drag (touch uses native scrolling)
+  var dragging = false, moved = false, startX = 0, startLeft = 0;
+  track.addEventListener('pointerdown', function (e) {
+    if (e.pointerType !== 'mouse' || e.button !== 0) return;
+    dragging = true; moved = false; startX = e.clientX; startLeft = track.scrollLeft;
+  });
+  window.addEventListener('pointermove', function (e) {
+    if (!dragging) return;
+    var dx = e.clientX - startX;
+    if (!moved && Math.abs(dx) > 5) { moved = true; track.classList.add('dragging'); }
+    if (moved) track.scrollLeft = startLeft - dx;
+  });
+  window.addEventListener('pointerup', function () {
+    if (!dragging) return;
+    dragging = false;
+    if (moved) {
+      var idx = Math.round(track.scrollLeft / step());
+      track.classList.remove('dragging');
+      track.scrollTo({ left: idx * step(), behavior: reduceMotion ? 'auto' : 'smooth' });
+    }
+  });
+  track.addEventListener('click', function (e) { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
+  track.addEventListener('dragstart', function (e) { e.preventDefault(); });
+
+  /* ---------- AI flow: highlight steps in sequence ---------- */
+  var flow = document.getElementById('flow');
+  var flowSteps = flow.querySelectorAll('.flow-step');
+  var fi = 0, timer = null;
+  function activate(i) { flowSteps.forEach(function (s, k) { s.classList.toggle('is-active', k === i); }); }
+  function startFlow() { if (timer || reduceMotion) return; activate(fi); timer = setInterval(function () { fi = (fi + 1) % flowSteps.length; activate(fi); }, 2200); }
+  function stopFlow() { clearInterval(timer); timer = null; }
+  flowSteps.forEach(function (s, k) { s.addEventListener('mouseenter', function () { stopFlow(); fi = k; activate(k); }); });
+  flow.addEventListener('mouseleave', startFlow);
+  if (reduceMotion) { activate(0); }
+  else if (hasIO) {
+    new IntersectionObserver(function (en) { en[0].isIntersecting ? startFlow() : stopFlow(); }, { threshold: 0.3 }).observe(flow);
+  } else { startFlow(); }
+
+  /* ---------- FAQ accordion ---------- */
+  document.querySelectorAll('.faq-item').forEach(function (item) {
+    var btn = item.querySelector('.faq-q');
+    btn.addEventListener('click', function () {
+      var open = !item.classList.contains('open');
+      item.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+})();
+</script>
+</body>
+</html>
